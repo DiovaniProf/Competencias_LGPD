@@ -1,11 +1,709 @@
-:root{font-family:Inter,ui-sans-serif,system-ui,Arial,sans-serif;color:#eff8ff;background:#061321;font-synthesis:none}*{box-sizing:border-box}body{margin:0;background:radial-gradient(ellipse at 50% -20%,#183b60 0,#081b2e 46%,#061321 100%);min-height:100vh}button,textarea{font:inherit}button{cursor:pointer;border:0;border-radius:11px;padding:12px 18px;font-weight:800;letter-spacing:.035em;color:#eef8ff;transition:filter .2s,transform .2s}button:hover:not(:disabled){filter:brightness(1.14)}button:active:not(:disabled){transform:scale(.98)}button:disabled{opacity:.4;cursor:not-allowed}button:focus-visible,textarea:focus-visible{outline:3px solid #83e9ff;outline-offset:3px}#app{max-width:1500px;margin:auto;padding:16px clamp(14px,3vw,45px) 24px}header{display:flex;align-items:center;justify-content:space-between;gap:12px;border-bottom:1px solid #29455e;padding-bottom:14px}h1{font-size:clamp(22px,3vw,39px);letter-spacing:.04em;margin:4px 0}h1 em{font-style:normal;color:#5ee8f6}header p{color:#b6cadb;margin:0}.eyebrow{font-size:12px;letter-spacing:.14em;font-weight:800;color:#8ad8ee}.outline{background:#112c45;border:1px solid #5182a1}.primary{background:linear-gradient(120deg,#0867df,#04b6d4);box-shadow:0 8px 30px #007bc533}.secondary{background:#294863}.danger{background:#602d3e}.big{font-size:19px;padding:18px 25px}.topstats{display:flex;justify-content:space-between;gap:12px;color:#bcd3e6;font-size:13px;font-weight:700;padding:15px 0 10px}.progress{height:6px;background:#18354b;border-radius:20px;overflow:hidden}.progress div{height:100%;width:0;background:linear-gradient(90deg,#1e8aff,#6cf5ec);transition:width .3s}nav{display:flex;gap:8px;margin:17px 0}nav button{background:#102d47;border:1px solid #284d69;flex:1}nav button.active{background:#1367bc;border-color:#63e8fc}.view{background:linear-gradient(140deg,#102941ee,#0b2035ef);border:1px solid #2b506d;border-radius:22px;min-height:min(72vh,800px);padding:clamp(16px,2.6vw,36px);box-shadow:0 15px 45px #0004}.hidden{display:none!important}.wheelarea{display:grid;grid-template-columns:minmax(290px,1fr) minmax(280px,.95fr);align-items:center;gap:clamp(15px,4vw,60px);min-height:60vh}.wheelbox{position:relative;max-width:610px;width:100%;margin:auto}.wheelbox canvas{width:100%;display:block;filter:drop-shadow(0 15px 28px #0007);transition:transform 3.1s cubic-bezier(.13,.75,.12,1)}.pointer{position:absolute;top:-4px;left:50%;transform:translateX(-50%);border-left:19px solid transparent;border-right:19px solid transparent;border-top:38px solid #ffdb87;filter:drop-shadow(0 2px 4px #000)}.wheelcopy h2{font-size:clamp(30px,4vw,57px);line-height:1.12;margin:14px 0 20px}.wheelcopy p{font-size:clamp(15px,1.5vw,19px);color:#bed1e2;line-height:1.65}.wheelcopy button{display:block;width:min(100%,430px);margin:13px 0}.hint{color:#a8c3d6;font-size:14px;line-height:1.6}.screenbar{display:flex;align-items:center;justify-content:space-between;gap:14px;margin-bottom:22px}.screenbar h2{font-size:clamp(22px,2.5vw,32px);margin:7px 0}.focuspanel{max-width:1100px;margin:auto}.tag{display:inline-block;background:#104d73;border:1px solid #257aab;padding:8px 14px;border-radius:50px;color:#8ce5fa;font-weight:800;font-size:12px;letter-spacing:.1em}.focuspanel h2{font-size:clamp(27px,3.5vw,49px);line-height:1.3;text-align:center;margin:30px auto;max-width:1050px}.answerrow{display:grid;grid-template-columns:1fr 1fr;gap:15px;max-width:680px;margin:0 auto 13px}.answer{font-size:clamp(18px,2vw,26px);padding:18px}.yes{background:#0a6c68;border:2px solid #2fbab2}.no{background:#704454;border:2px solid #ad687e}.answer.selected{outline:4px solid #fff;outline-offset:3px;box-shadow:0 0 22px #68f0eb5a}.focuspanel>.hint{text-align:center;min-height:23px}.wide{width:100%;margin-top:18px;text-align:left;display:flex;justify-content:space-between;background:#173a55;font-size:16px;padding:18px}.reveal{border:1px solid #2b5b77;border-top:0;border-radius:0 0 13px 13px;background:#102f49;padding:20px 24px}.reveal h3{color:#8de7fb;font-size:13px;letter-spacing:.12em;margin:0 0 9px}.reveal p{font-size:clamp(17px,2vw,23px);line-height:1.5}.reveal label{display:block;margin:25px 0 10px;color:#9de8f5;font-weight:800;font-size:13px}.reveal textarea{display:block;width:100%;min-height:140px;background:#081e32;color:#fff;border:1px solid #5483a3;border-radius:12px;padding:15px;resize:vertical}.reveal small{display:block;margin-top:8px;color:#9db8cb}.bottomactions{display:flex;justify-content:space-between;gap:15px;margin-top:25px}.resultgrid{display:grid;grid-template-columns:minmax(300px,1.1fr) minmax(280px,.9fr);gap:30px;align-items:start}.chartwrap{border:1px solid #2d526e;background:#0c2439;border-radius:17px;padding:10px}.chartwrap canvas{width:100%;display:block}.metric{padding:15px 0;border-bottom:1px solid #29465d}.metric strong{display:block;margin-bottom:7px}.metric span{font-size:13px;color:#aac8d9}.metric .meter{height:8px;border-radius:20px;background:#24465f;margin:9px 0;overflow:hidden}.meter i{display:block;height:100%;border-radius:20px}.resultactions{display:grid;gap:10px;margin-top:23px}.questionitem{background:#132e47;border:1px solid #2a506b;padding:15px;margin:9px 0;border-radius:11px;width:100%;text-align:left}.questionitem:disabled{opacity:.55}footer{text-align:center;color:#8daec4;font-size:12px;margin-top:17px;line-height:1.5}#app:fullscreen{overflow-y:auto;background:#061321;max-width:none;padding:18px 3vw}.view:fullscreen{overflow-y:auto;background:#061321;padding:3vw}.view:fullscreen .focuspanel{max-width:1200px}@media(max-width:780px){.wheelarea,.resultgrid{grid-template-columns:1fr}.wheelbox{max-width:450px}.wheelcopy{text-align:center}.wheelcopy button{margin:12px auto}.wheelcopy h2{font-size:32px}.bottomactions{flex-direction:column}.topstats{font-size:11px}header{align-items:flex-start}header .outline{font-size:11px;padding:10px}nav button{font-size:12px;padding:11px 5px}.view{min-height:60vh}.screenbar{flex-wrap:wrap}.focuspanel h2{font-size:26px}}
-@media print{body{background:#fff;color:#111}header,nav,.topstats,.progress,footer,.resultactions,.screenbar button{display:none!important}.view{border:0;box-shadow:none;background:#fff;color:#111}#resultado{display:block!important}.chartwrap{border:0}#metrics{color:#111}.hint{color:#444}}
 
-/* Versão 3 — contraste das respostas e comentário formativo */
-.answer.yes{background:#a8f0c4;border:2px solid #61d89c;color:#071b14;font-weight:900;text-transform:uppercase}
-.answer.no{background:#ffb9ba;border:2px solid #f28e94;color:#230e11;font-weight:900;text-transform:uppercase}
-.answer.selected{outline:4px solid #ffffff;outline-offset:3px;box-shadow:0 0 0 7px #5ce8ff55,0 0 28px #72effd66}
-.reflection{margin:24px 0 6px;border:1px solid #4d859c;border-left:5px solid #71e4df;border-radius:14px;background:#153650;padding:19px 20px;color:#f1fbff;line-height:1.7}
-.reflection h3{margin:0 0 10px;color:#93f0f4;font-size:13px;letter-spacing:.1em}
-.reflection p{margin:0;font-size:15px;line-height:1.75}
-@media print{.reflection{color:#142d42;background:#f0f8fc;border:1px solid #9dbdc9}.reflection h3{color:#145774}}
+:root{font-family:system-ui,Arial,sans-serif;background:#081629;color:#eff7ff}*{box-sizing:border-box}body{margin:0}main{max-width:900px;margin:auto;padding:16px 12px 70px}h1{text-align:center;font-size:clamp(24px,5vw,38px);margin:6px 0}header{text-align:center}.muted{color:#abc4da;font-size:13px}button,input,textarea{font:inherit}button{cursor:pointer;background:#1268dc;color:white;border:0;border-radius:11px;padding:12px;font-weight:700}button:disabled{opacity:.4}button.alt{background:#27425f}button.out{background:transparent;border:1px solid #7294b1}button:focus-visible{outline:3px solid #f4d079}nav{display:grid;grid-template-columns:repeat(4,1fr);gap:6px;margin:16px 0}nav button{font-size:12px;padding:11px 2px;background:#1b3451}nav button.on{background:#166cde}.panel{background:#122a45;border:1px solid #30506b;border-radius:17px;padding:16px;margin:12px 0}.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}.stat{text-align:center;background:#1b3551;border-radius:12px;padding:12px}.stat b{font-size:23px;display:block}.actions{display:grid;gap:9px}#wheel{width:100%;display:block;transition:transform 3s cubic-bezier(.13,.73,.12,1);transform-origin:center center}.wheel-wrap{width:min(100%,390px);position:relative;margin:8px auto;overflow:visible}.wheel-pointer{position:absolute;top:-7px;left:50%;transform:translateX(-50%);width:0;height:0;border-left:17px solid transparent;border-right:17px solid transparent;border-top:34px solid #f5d17d;z-index:3;filter:drop-shadow(0 2px 2px #000)}.spinning{pointer-events:none;opacity:.65}#spinMessage{min-height:20px;color:#f5d17d;font-weight:700;text-align:center}.center{text-align:center}.question{font-size:clamp(21px,4.8vw,31px);font-weight:750;line-height:1.4;text-align:center;min-height:145px;display:grid;place-items:center}.bridge{display:grid;grid-template-columns:1fr 1fr;gap:10px}.bridge article{background:#1e3a59;border-radius:12px;padding:13px}textarea,input{background:#091d33;border:1px solid #66819d;color:white;border-radius:10px;padding:11px;width:100%}textarea{min-height:95px}label{display:block;margin:12px 0 6px;font-weight:650}.item{display:block;text-align:left;width:100%;margin:7px 0;background:#1d3854}.pill{font-size:12px;color:#9fe7f7}.bar{height:7px;background:#29465f;border-radius:8px;overflow:hidden}.bar div{height:100%;background:#25d3e7}.hidden{display:none}canvas#radar{width:100%;max-width:510px;display:block;margin:auto;background:#102640;border-radius:16px}footer{text-align:center;color:#a9c4dd;font-size:12px;margin:25px 0}@media(max-width:480px){.bridge{grid-template-columns:1fr}.panel{padding:13px}nav button{font-size:11px}.question{min-height:130px}}
+
+main{max-width:1480px;padding:18px 26px 65px}header{text-align:left;margin-bottom:14px}header h1{text-align:left;font-size:clamp(25px,3vw,40px)}
+nav{max-width:760px;margin:12px 0 20px}.stats{max-width:760px;margin:10px 0}.bar{max-width:760px}
+#roda{background:#0d263d;border-color:#2b526f;padding:26px 28px}.home-layout{display:grid;grid-template-columns:minmax(350px,1fr) minmax(360px,1fr);gap:40px;align-items:center;min-height:550px}.wheel-side{display:flex;flex-direction:column;align-items:center}.wheel-wrap{width:min(100%,510px)}.home-side{max-width:610px}.eyebrow{font-size:12px;letter-spacing:2px;font-weight:900;color:#75d7f7}.hero{font-size:clamp(30px,4.2vw,58px);line-height:1.13;margin:15px 0 18px}.intro{color:#c3dcf1;font-size:17px;line-height:1.65}.home-side .actions{max-width:430px;margin-top:18px}.home-side .actions button{min-height:52px;text-transform:uppercase}.danger{border-color:#b65d73!important;color:#ffd9df;background:#492b3b!important}.home-side label{font-size:16px}#total{max-width:260px;font-size:21px;font-weight:750}.panel{margin:16px 0}#pergunta{min-height:60vh}#pergunta .question{min-height:165px}#pergunta .bridge{margin:22px 0}.wheel-pointer{top:-6px}
+@media(max-width:900px){.home-layout{grid-template-columns:1fr;gap:16px}.wheel-wrap{max-width:430px}.home-side{max-width:none}.hero{font-size:clamp(28px,6vw,44px)}main{padding:12px 14px 50px}#roda{padding:18px}}
+
+/* Experiências individual e coletiva */
+main{max-width:1500px;padding:22px clamp(16px,3vw,50px) 70px}main>header{position:relative;text-align:left;padding:2px 175px 20px 0;border-bottom:1px solid #2d4b68;margin-bottom:18px}main>header h1{font-size:clamp(26px,3vw,43px);text-align:left}.accent,.welcome-card h1 span{color:#49d7e8}.fullscreen{position:absolute;right:0;top:10px;background:#12314d;border:1px solid #5a86aa}nav{grid-template-columns:repeat(4,1fr)}nav button{font-size:14px}#roda{padding:22px 28px}.home-layout{grid-template-columns:minmax(320px,1fr) minmax(350px,1fr);gap:36px}.welcome-screen{min-height:100dvh;display:grid;place-items:center;padding:30px 18px;background:radial-gradient(circle at 65% 18%,#173f5f 0%,#081629 65%)}.welcome-card{width:min(950px,100%);background:#102b45;border:1px solid #315876;border-radius:24px;padding:clamp(25px,5vw,65px);box-shadow:0 25px 70px #0005}.welcome-card h1{font-size:clamp(30px,5vw,56px);text-align:left;line-height:1.13;margin:18px 0 12px}.welcome-sub{color:#9fe5f5;font-weight:700}.welcome-card h2{font-size:clamp(22px,3vw,32px);margin-top:34px}.welcome-card p{line-height:1.75;color:#d4e5f3;font-size:17px}.mode-question{font-weight:800;font-size:21px!important;color:white!important;margin-top:28px}.mode-buttons{display:grid;grid-template-columns:1fr 1fr;gap:15px;margin:18px 0}.mode-buttons button{padding:20px;font-size:20px;background:linear-gradient(110deg,#1364ce,#05a6c7)}.answer-buttons{display:grid;grid-template-columns:1fr 1fr;gap:14px}.answer-buttons button{color:#061b1c;font-size:22px;font-weight:900;padding:20px}.answer-yes{background:#a6f0c2}.answer-no{background:#ffbabc}.answer-buttons button.selected{outline:4px solid #fff;outline-offset:2px}.answer-label{font-weight:800;font-size:19px}#modeIndicator{margin-top:18px}.hidden{display:none!important}@media(max-width:850px){.home-layout{grid-template-columns:1fr;gap:15px}main>header{padding-right:0;padding-top:65px}.fullscreen{left:0;right:auto;top:0}.mode-buttons{grid-template-columns:1fr}}
+
+/* v7: painel horizontal como na Roda das Competências LGPD */
+.topstats{display:flex;justify-content:space-between;align-items:center;gap:14px;margin:14px 0 9px;color:#c9e6ff;font-size:13px;font-weight:750;flex-wrap:wrap}
+.bar{max-width:none!important;width:100%;height:7px;margin:0 0 14px;background:#274a64;border-radius:12px;overflow:hidden}
+.bar #progress{background:linear-gradient(90deg,#1984ef,#42e1e9);height:100%;transition:width .3s}
+main nav{max-width:none!important;width:100%;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;margin:14px 0 18px}
+main nav button{padding:13px 8px;border:1px solid #315873;background:#12314d;color:#fff;font-size:15px;font-weight:850}
+main nav button.on{background:linear-gradient(105deg,#1265c9,#1283d3);border-color:#48b7f5}
+@media(max-width:650px){.topstats{font-size:11px;gap:6px}.topstats span{flex:1 1 40%}.topstats span:last-child{flex-basis:100%}main nav button{font-size:12px;padding:12px 4px}}
+
+/* v8: o desenho é animado no canvas; nunca rotacionar o elemento. */
+#wheel{transform:none!important;transition:none!important}
+
+/* Relatório no padrão visual LGPD */
+.report-heading{display:flex;align-items:center;justify-content:space-between;gap:20px;margin-bottom:14px}.report-heading h2{font-size:clamp(24px,2.6vw,34px);margin:8px 0}.report-heading .out{flex-shrink:0}.report-grid{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(340px,.95fr);gap:24px;align-items:start}.report-chart{background:#0b2439;border:1px solid #335774;border-radius:16px;padding:12px}.report-chart canvas{max-width:100%;height:auto}.report-side #metrics{margin-top:20px}.metric-row{padding:13px 0 16px;border-bottom:1px solid #34516b}.metric-row strong{display:block;font-size:15px;margin-bottom:5px}.metric-row small{display:block;color:#bad7ed;font-size:12px;margin-bottom:8px}.metric-track{height:7px;background:#2c526c;border-radius:20px;overflow:hidden}.metric-fill{height:100%;border-radius:20px}.report-actions{display:grid;gap:9px;margin-top:18px}.report-actions button{width:100%}.reflection{margin-top:24px;padding:22px;border:1px solid #355e78;border-radius:16px;background:#102b45}.reflection p{line-height:1.7;margin:12px 0}.reflection .eyebrow{color:#76d9f2}.reflection strong{color:#eafaff}@media(max-width:900px){.report-grid{grid-template-columns:1fr}.report-heading{flex-wrap:wrap}.report-heading .out{width:100%}}
+
+/* v13 — banco de questões no padrão LGPD: bloqueio até o sorteio */
+#list{display:grid;gap:10px;margin-top:18px}
+#list .bank-question{display:flex;align-items:center;gap:18px;width:100%;margin:0;padding:17px 20px;text-align:left;background:#14334e;border:1px solid #315675;border-radius:12px;color:#f4faff;transition:background .18s,border-color .18s}
+#list .bank-question.unlocked:hover{background:#1b4768;border-color:#5ac6eb}
+#list .bank-question.locked{opacity:.72;cursor:not-allowed;background:#102b43}
+#list .bank-question:disabled{opacity:.72}
+#list .bank-status{display:inline-flex;align-items:center;justify-content:center;min-width:174px;padding:9px 11px;border-radius:8px;background:#09253b;color:#b7cfe2;font-size:12px;font-weight:850;letter-spacing:.035em;white-space:nowrap}
+#list .bank-question.unlocked .bank-status{background:#0c514f;color:#b4f7e3}
+#list .bank-content{display:flex;flex-direction:column;gap:5px;min-width:0}
+#list .bank-content strong{font-size:15px;color:#fff}
+#list .bank-content span{font-size:14px;color:#c1d9eb;line-height:1.45}
+@media(max-width:650px){#list .bank-question{align-items:flex-start;flex-direction:column;gap:9px;padding:13px}#list .bank-status{min-width:0}}
+
+
+/* v18 — melhor aproveitamento da largura e altura, especialmente em tela cheia */
+@media (min-width: 1100px) {
+  #appMain {max-width:none;width:100%;padding:clamp(12px,1.35vw,26px) clamp(18px,2.1vw,44px) 28px;}
+  #roda {padding:clamp(18px,2vw,34px);}
+  #roda .home-layout {grid-template-columns:minmax(0,1.05fr) minmax(0,1fr);gap:clamp(24px,3.5vw,75px);min-height:min(700px,calc(100dvh - 255px));}
+  #roda .wheel-wrap {width:min(100%,min(58vh,640px));max-width:none;}
+  #roda .home-side {max-width:760px;width:100%;}
+  #roda .home-side .actions {max-width:560px;}
+  #roda .hero {font-size:clamp(35px,3.45vw,65px);}
+  #roda .intro {font-size:clamp(16px,1.18vw,21px);}
+  #relatorio .report-grid {grid-template-columns:minmax(0,1.15fr) minmax(380px,.95fr);gap:clamp(22px,2.5vw,50px);}
+  #relatorio .report-chart {display:flex;align-items:center;justify-content:center;min-height:550px;}
+  #relatorio .report-chart canvas {width:min(100%,740px);max-width:740px;}
+}
+@media (min-width: 1100px) and (min-height: 720px) {
+  :fullscreen #appMain, body:has(:fullscreen) #appMain {min-height:100dvh;display:flex;flex-direction:column;}
+  :fullscreen #roda, body:has(:fullscreen) #roda {flex:1;display:flex;align-items:center;}
+  :fullscreen #roda .home-layout, body:has(:fullscreen) #roda .home-layout {width:100%;min-height:0;}
+  :fullscreen #roda .wheel-wrap, body:has(:fullscreen) #roda .wheel-wrap {width:min(100%,min(65vh,760px));}
+  :fullscreen #roda .home-side .actions button, body:has(:fullscreen) #roda .home-side .actions button {min-height:clamp(52px,6vh,68px);}
+  :fullscreen #relatorio, body:has(:fullscreen) #relatorio {flex:1;}
+  :fullscreen #relatorio .report-chart, body:has(:fullscreen) #relatorio .report-chart {min-height:min(75vh,850px);}
+  :fullscreen #relatorio .report-chart canvas, body:has(:fullscreen) #relatorio .report-chart canvas {width:min(100%,min(75vh,900px));max-width:900px;}
+}
+@media (min-width: 1100px) and (max-height: 780px) {
+  #roda .home-layout {min-height:0;}
+  #roda .wheel-wrap {width:min(100%,min(52vh,540px));}
+  #roda .hero {font-size:clamp(31px,3vw,48px);margin:8px 0 12px;}
+  #roda .intro {line-height:1.4;}
+  #roda .home-side .actions button {min-height:43px;}
+}
+@media (max-width: 1099px) {
+  #appMain {width:100%;max-width:none;padding-inline:clamp(12px,2.5vw,28px);}
+}
+
+
+/* v19 — tela cheia: aproveitar toda a área real do monitor */
+@media (min-width: 1100px) {
+  html:fullscreen, html:fullscreen body, html.fullscreen-active, html.fullscreen-active body {width:100%;min-height:100%;margin:0;}
+  html:fullscreen #appMain, html.fullscreen-active #appMain {
+    width:100vw!important; max-width:100vw!important; min-height:100dvh;
+    margin:0!important; padding:clamp(10px,1.2vh,18px) clamp(16px,1.65vw,38px) 12px!important;
+    display:flex; flex-direction:column;
+  }
+  html:fullscreen #appMain>header, html.fullscreen-active #appMain>header {
+    flex:0 0 auto; padding-bottom:clamp(8px,1vh,15px); margin-bottom:clamp(6px,1vh,12px);
+  }
+  html:fullscreen #appMain>header h1, html.fullscreen-active #appMain>header h1 {font-size:clamp(30px,2.25vw,48px);margin:3px 0 5px;}
+  html:fullscreen #appMain .topstats, html.fullscreen-active #appMain .topstats {margin:clamp(5px,.8vh,10px) 0;}
+  html:fullscreen #appMain nav, html.fullscreen-active #appMain nav {margin:clamp(6px,.9vh,12px) 0;}
+  html:fullscreen #appMain nav button, html.fullscreen-active #appMain nav button {padding:clamp(9px,1.2vh,16px) 8px;}
+  html:fullscreen #roda:not(.hidden), html.fullscreen-active #roda:not(.hidden) {
+    flex:1 1 auto; min-height:0; width:100%; margin:4px 0 0; padding:clamp(12px,1.6vw,32px);
+    display:flex; align-items:center; justify-content:center;
+  }
+  html:fullscreen #roda .home-layout, html.fullscreen-active #roda .home-layout {
+    width:100%; height:100%; min-height:0; gap:clamp(20px,3vw,80px);
+    grid-template-columns:minmax(0,1.08fr) minmax(0,1fr); align-items:center;
+  }
+  html:fullscreen #roda .wheel-side, html.fullscreen-active #roda .wheel-side {width:100%;justify-content:center;min-width:0;}
+  html:fullscreen #roda .wheel-wrap, html.fullscreen-active #roda .wheel-wrap {
+    width:min(100%, 71dvh, 43vw, 860px)!important; max-width:none!important;
+    margin:10px auto;
+  }
+  html:fullscreen #roda .home-side, html.fullscreen-active #roda .home-side {width:100%;max-width:900px;}
+  html:fullscreen #roda .home-side .actions, html.fullscreen-active #roda .home-side .actions {max-width:min(100%,740px);}
+  html:fullscreen #roda .home-side .actions button, html.fullscreen-active #roda .home-side .actions button {min-height:clamp(48px,5.6vh,72px);font-size:clamp(14px,1.15vw,19px);}
+  html:fullscreen #roda .hero, html.fullscreen-active #roda .hero {font-size:clamp(36px,3.3vw,68px);line-height:1.12;}
+  html:fullscreen #roda .intro, html.fullscreen-active #roda .intro {font-size:clamp(17px,1.2vw,23px);}
+  html:fullscreen #relatorio:not(.hidden), html.fullscreen-active #relatorio:not(.hidden) {flex:1 1 auto;min-height:0;}
+  html:fullscreen #relatorio .report-chart, html.fullscreen-active #relatorio .report-chart {min-height:min(72dvh,850px);}
+  html:fullscreen #relatorio .report-chart canvas, html.fullscreen-active #relatorio .report-chart canvas {width:min(100%,74dvh,920px);max-width:920px;}
+  html:fullscreen #appMain>footer, html.fullscreen-active #appMain>footer {margin:8px 0 0;font-size:11px;flex:0 0 auto;}
+}
+@media (min-width:1100px) and (max-height:760px) {
+  html:fullscreen #roda .wheel-wrap, html.fullscreen-active #roda .wheel-wrap {width:min(100%,60dvh,43vw,700px)!important;}
+  html:fullscreen #roda .hero, html.fullscreen-active #roda .hero {font-size:clamp(30px,2.6vw,48px);margin:8px 0;}
+  html:fullscreen #roda .home-side .actions button, html.fullscreen-active #roda .home-side .actions button {min-height:43px;}
+}
+
+/* v20 — área de registros em duas colunas: ações à esquerda, pontes à direita */
+#pergunta .question-bottom-grid {display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(18px,2.2vw,36px);align-items:stretch;margin-top:22px;}
+#pergunta .question-left {min-width:0;display:flex;flex-direction:column;}
+#pergunta .question-left label {margin:0 0 10px;}
+#pergunta .question-left textarea {min-height:110px;resize:vertical;flex:1;}
+#pergunta .question-save-actions {margin-top:12px;gap:10px;}
+#pergunta .question-save-actions button {min-height:52px;text-transform:uppercase;}
+#pergunta .question-right {display:grid;grid-template-columns:1fr;grid-template-rows:1fr 1fr;gap:12px;margin:0;min-width:0;}
+#pergunta .question-right article {display:flex;flex-direction:column;justify-content:center;padding:clamp(15px,1.6vw,26px);}
+#pergunta .question-right article p {line-height:1.55;margin:9px 0 0;}
+@media (max-width:780px) {#pergunta .question-bottom-grid {grid-template-columns:1fr;}#pergunta .question-right {grid-template-columns:1fr;grid-template-rows:auto;}#pergunta .question-left textarea {min-height:100px;}}
+
+/* v21 — abertura mais ampla com modalidades explicativas lado a lado */
+.welcome-screen {padding:clamp(16px,2.8vw,42px);}
+.welcome-card {width:min(1120px,100%);padding:clamp(25px,3.6vw,56px);}
+.welcome-card h1 {font-size:clamp(30px,3.65vw,53px);margin:13px 0 8px;}
+.welcome-card h2 {margin-top:22px;}
+.welcome-card>.mode-question {margin-top:22px;}
+.mode-cards {display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px;margin-top:16px;}
+.mode-card {display:flex;flex-direction:column;min-width:0;padding:clamp(18px,2vw,26px);background:#173b58;border:1px solid #3a779f;border-radius:16px;}
+.mode-card-title {display:flex;align-items:center;gap:11px;margin-bottom:7px;}
+.mode-card-title h3 {font-size:clamp(18px,1.6vw,23px);margin:0;color:#fff;letter-spacing:.35px;}
+.mode-icon {color:#7ee1f4;font-size:25px;line-height:1;}
+.welcome-card .mode-card p {font-size:clamp(14px,1.05vw,16px);line-height:1.55;margin:10px 0;color:#dcebf5;}
+.mode-card button {margin-top:auto;width:100%;padding:16px 12px;background:linear-gradient(105deg,#1469ce,#04a6c6);font-weight:900;font-size:16px;}
+.mode-card p:last-of-type {margin-bottom:23px;}
+.mode-card button:focus-visible {outline:3px solid #fff;outline-offset:3px;}
+@media(max-width:700px){.mode-cards{grid-template-columns:1fr}.welcome-card{padding:24px 18px}.mode-card p:last-of-type{margin-bottom:20px}}
+
+/* v22 — abertura em três colunas, aproveitamento horizontal */
+.welcome-screen{padding:clamp(14px,2.2vw,35px);min-height:100dvh;}
+.welcome-card.welcome-v22{width:min(1510px,100%);max-width:none;padding:clamp(24px,3.2vw,54px);}
+.welcome-v22 .welcome-header{padding-bottom:18px;border-bottom:1px solid #365b78;}
+.welcome-v22 .welcome-header h1{font-size:clamp(30px,3.1vw,51px);max-width:none;line-height:1.16;}
+.welcome-v22 .welcome-header .welcome-sub{margin-bottom:0;}
+.welcome-v22 .welcome-lead{font-size:clamp(20px,2vw,28px);margin:24px 0 20px;}
+.welcome-three{display:grid;grid-template-columns:1.05fr 1fr 1fr;gap:18px;align-items:stretch;}
+.welcome-three>section{min-width:0;display:flex;flex-direction:column;border-radius:16px;padding:clamp(20px,1.8vw,29px);}
+.welcome-three .welcome-purpose{background:#12324d;border:1px solid #315b7b;}
+.welcome-three .mode-card{background:#173b58;border:1px solid #3a779f;}
+.welcome-three .welcome-purpose h3{font-size:clamp(19px,1.55vw,25px);line-height:1.3;margin:10px 0 16px;}
+.welcome-three .purpose-icon{color:#70dff1;font-size:29px;}
+.welcome-v22 .welcome-three p{font-size:clamp(14px,1.05vw,17px);line-height:1.65;margin:8px 0 13px;color:#dcebf5;}
+.welcome-v22 .welcome-three .mode-card-title{min-height:40px;}
+.welcome-v22 .welcome-three .mode-card button{margin-top:auto;min-height:54px;}
+@media(min-width:1200px) and (min-height:760px){.welcome-v22 .welcome-three>section{min-height:365px;}}
+@media(max-width:1050px){.welcome-three{grid-template-columns:repeat(2,minmax(0,1fr));}.welcome-three .welcome-purpose{grid-column:1/-1;}.welcome-v22 .welcome-three>section{min-height:0;}}
+@media(max-width:700px){.welcome-three{grid-template-columns:1fr;}.welcome-three .welcome-purpose{grid-column:auto;}.welcome-card.welcome-v22{padding:23px 17px;}.welcome-v22 .welcome-lead{margin:20px 0 14px;}}
+
+/* v23 — abertura expandida: mais largura e altura útil, sem sacrificar responsividade */
+@media (min-width: 1100px) {
+  #welcome.welcome-screen {
+    width:100%; min-height:100dvh;
+    padding:clamp(12px,1.6vw,28px) clamp(14px,1.8vw,36px);
+    display:flex; align-items:center; justify-content:center;
+  }
+  #welcome .welcome-card.welcome-v22 {
+    width:100%; max-width:1920px;
+    min-height:min(900px,calc(100dvh - clamp(24px,3.2vw,56px)));
+    padding:clamp(26px,3vw,60px) clamp(28px,3.5vw,76px);
+    display:flex; flex-direction:column; justify-content:center;
+  }
+  #welcome .welcome-v22 .welcome-header {padding-bottom:clamp(16px,2.3vh,28px);}
+  #welcome .welcome-v22 .welcome-header h1 {font-size:clamp(35px,3.2vw,65px);}
+  #welcome .welcome-v22 .welcome-lead {margin:clamp(20px,3vh,36px) 0 clamp(16px,2.5vh,30px);font-size:clamp(22px,1.8vw,34px);}
+  #welcome .welcome-three {gap:clamp(16px,1.5vw,30px);grid-template-columns:1.04fr 1fr 1fr;}
+  #welcome .welcome-three>section {min-height:clamp(390px,51dvh,610px);padding:clamp(22px,2vw,40px);}
+  #welcome .welcome-v22 .welcome-three p {font-size:clamp(15px,1.04vw,20px);line-height:1.68;}
+  #welcome .welcome-three .welcome-purpose h3 {font-size:clamp(22px,1.6vw,30px);}
+  #welcome .mode-card-title h3 {font-size:clamp(21px,1.4vw,27px);}
+  #welcome .welcome-v22 .welcome-three .mode-card button {min-height:clamp(56px,6.5vh,76px);font-size:clamp(15px,1vw,19px);}
+}
+@media (min-width:1100px) and (max-height:720px) {
+  #welcome .welcome-card.welcome-v22 {min-height:calc(100dvh - 24px);padding-block:18px;}
+  #welcome .welcome-three>section {min-height:310px;padding:18px 24px;}
+  #welcome .welcome-v22 .welcome-three p {font-size:clamp(14px,.95vw,17px);line-height:1.48;margin:6px 0 10px;}
+  #welcome .welcome-v22 .welcome-lead {margin:13px 0;}
+}
+@media (min-width:701px) and (max-width:1099px) {
+  #welcome .welcome-card.welcome-v22 {width:100%;}
+}
+
+/* v24 — preenchimento real da janela na tela de escolha, mantendo 3 colunas */
+@media (min-width:1100px) {
+  #welcome.welcome-screen {
+    width:100%; min-height:100dvh;
+    padding:clamp(8px,1.15vw,22px)!important;
+    display:flex;align-items:stretch;justify-content:center;
+  }
+  #welcome .welcome-card.welcome-v22 {
+    box-sizing:border-box;width:100%!important;max-width:none!important;
+    min-height:calc(100dvh - clamp(16px,2.3vw,44px))!important;
+    padding:clamp(28px,3.1vw,65px) clamp(32px,3.4vw,76px)!important;
+    display:flex;flex-direction:column;justify-content:center;
+  }
+  #welcome .welcome-v22 .welcome-header h1 {font-size:clamp(37px,3.3vw,72px);line-height:1.12;}
+  #welcome .welcome-v22 .welcome-lead {margin:clamp(22px,3.2vh,42px) 0 clamp(18px,2.7vh,34px);}
+  #welcome .welcome-three {grid-template-columns:1.04fr 1fr 1fr;gap:clamp(16px,1.5vw,30px);flex:1;min-height:0;}
+  #welcome .welcome-three>section {min-height:clamp(370px,53dvh,740px);padding:clamp(24px,2.1vw,46px);}
+  #welcome .welcome-v22 .welcome-three p {font-size:clamp(15px,1.04vw,21px);line-height:1.68;}
+  #welcome .welcome-three .mode-card button {min-height:clamp(58px,7vh,86px);}
+}
+@media (min-width:1100px) and (max-height:740px) {
+  #welcome .welcome-card.welcome-v22 {padding-block:18px!important;}
+  #welcome .welcome-three>section {min-height:300px;padding:20px 24px;}
+  #welcome .welcome-v22 .welcome-three p {font-size:clamp(14px,.95vw,18px);line-height:1.45;margin:6px 0 10px;}
+  #welcome .welcome-v22 .welcome-lead {margin:12px 0;}
+}
+
+
+/* v25 — leitura ampliada e aproveitamento vertical na tela de questões */
+#pergunta .question-bottom-grid {
+  gap:clamp(20px,2.5vw,48px);
+  margin-top:clamp(22px,3vh,38px);
+  align-items:stretch;
+}
+#pergunta .question-left label {font-size:clamp(17px,1.2vw,22px);line-height:1.4;}
+#pergunta .question-left textarea {
+  font-size:clamp(17px,1.16vw,21px);
+  line-height:1.65;
+  min-height:clamp(170px,25vh,320px);
+  padding:clamp(16px,1.4vw,25px);
+}
+#pergunta .question-left textarea::placeholder {font-size:clamp(15px,1.03vw,19px);line-height:1.5;}
+#pergunta .question-save-actions {gap:clamp(12px,1.7vh,20px);margin-top:clamp(14px,2vh,24px);}
+#pergunta .question-save-actions button {min-height:clamp(58px,7vh,82px);font-size:clamp(15px,1.08vw,20px);}
+#pergunta .question-right {gap:clamp(14px,2vh,24px);}
+#pergunta .question-right article {padding:clamp(22px,2vw,42px);}
+#pergunta .question-right article .pill {font-size:clamp(14px,1vw,18px);font-weight:800;letter-spacing:.06em;}
+#pergunta .question-right article p {font-size:clamp(19px,1.4vw,26px);line-height:1.5;margin-top:clamp(12px,2vh,24px);}
+#pergunta .muted {font-size:clamp(15px,1vw,18px);line-height:1.5;}
+@media (min-width:1100px) and (min-height:750px) {
+  #pergunta:not(.hidden) {min-height:calc(100dvh - 220px);display:flex;flex-direction:column;}
+  #pergunta #qcontrols:not(.hidden) {flex:1;display:flex;flex-direction:column;}
+  #pergunta .question-bottom-grid {flex:1;min-height:clamp(330px,43vh,650px);}
+  #pergunta .question-left textarea {flex:1;}
+}
+@media (max-width:780px) {
+  #pergunta .question-bottom-grid {grid-template-columns:1fr;}
+  #pergunta .question-right {grid-template-rows:auto;}
+  #pergunta .question-right article {min-height:125px;}
+  #pergunta .question-left textarea {min-height:155px;}
+}
+
+
+/* v26 — ampliação tipográfica, preservando integralmente os botões */
+main>header .eyebrow, #welcome .welcome-header .eyebrow {
+  font-size:clamp(17px,1.45vw,27px)!important;
+  line-height:1.35;
+  letter-spacing:.105em;
+  font-weight:900;
+}
+#pergunta .question-left label {
+  font-size:clamp(21px,1.65vw,30px)!important;
+  line-height:1.4;
+}
+#pergunta .question-left textarea {
+  font-size:clamp(20px,1.45vw,27px)!important;
+  line-height:1.6;
+}
+#pergunta .question-left textarea::placeholder {
+  font-size:clamp(18px,1.3vw,24px)!important;
+  line-height:1.5;
+}
+#pergunta .question-right article .pill {
+  font-size:clamp(18px,1.3vw,24px)!important;
+  line-height:1.4;
+  letter-spacing:.045em;
+}
+#pergunta .question-right article p {
+  font-size:clamp(23px,1.75vw,33px)!important;
+  line-height:1.48;
+}
+@media (max-width:780px) {
+  main>header .eyebrow, #welcome .welcome-header .eyebrow {font-size:17px!important;}
+  #pergunta .question-left label {font-size:20px!important;}
+  #pergunta .question-left textarea {font-size:18px!important;}
+  #pergunta .question-left textarea::placeholder {font-size:16px!important;}
+  #pergunta .question-right article .pill {font-size:16px!important;}
+  #pergunta .question-right article p {font-size:21px!important;}
+}
+
+
+/* v27 — tela cheia sem rolagem em monitores desktop: ocupação vertical fluida */
+@media (min-width:1100px) and (min-height:700px) {
+  html:fullscreen, html:fullscreen body, html.fullscreen-active, html.fullscreen-active body {height:100%;overflow:hidden;}
+  html:fullscreen #appMain, html.fullscreen-active #appMain {
+    height:100dvh!important;min-height:0!important;max-height:100dvh;
+    display:flex;flex-direction:column;overflow:hidden;
+    padding:clamp(8px,1.1vh,15px) clamp(18px,1.8vw,38px) clamp(5px,.7vh,10px)!important;
+  }
+  html:fullscreen #appMain>header, html.fullscreen-active #appMain>header {
+    flex:0 0 auto;margin-bottom:clamp(4px,.7vh,9px)!important;padding-bottom:clamp(5px,.8vh,10px)!important;
+  }
+  html:fullscreen #appMain>header .eyebrow, html.fullscreen-active #appMain>header .eyebrow {font-size:clamp(16px,1.1vw,23px)!important;}
+  html:fullscreen #appMain>header h1, html.fullscreen-active #appMain>header h1 {font-size:clamp(25px,2vw,42px)!important;line-height:1.12;}
+  html:fullscreen #appMain .topstats, html.fullscreen-active #appMain .topstats {flex:0 0 auto;margin:clamp(2px,.45vh,6px) 0!important;}
+  html:fullscreen #appMain>.bar, html.fullscreen-active #appMain>.bar {flex:0 0 auto;margin-bottom:clamp(3px,.5vh,7px)!important;}
+  html:fullscreen #appMain>nav, html.fullscreen-active #appMain>nav {flex:0 0 auto;margin:clamp(3px,.6vh,8px) 0!important;}
+  html:fullscreen #appMain>nav button, html.fullscreen-active #appMain>nav button {padding:clamp(7px,1vh,13px) 8px!important;}
+  html:fullscreen #appMain>footer, html.fullscreen-active #appMain>footer {flex:0 0 auto;margin:clamp(3px,.6vh,8px) 0 0!important;font-size:clamp(10px,.72vw,13px);}
+  html:fullscreen #pergunta:not(.hidden), html.fullscreen-active #pergunta:not(.hidden) {
+    flex:1 1 auto;min-height:0!important;height:auto;margin:clamp(4px,.7vh,10px) 0 0!important;
+    padding:clamp(10px,1.25vh,20px) clamp(16px,1.6vw,32px)!important;
+    display:flex;flex-direction:column;overflow:hidden;
+  }
+  html:fullscreen #pergunta #backWheel, html.fullscreen-active #pergunta #backWheel {align-self:flex-start;flex:0 0 auto;padding:clamp(6px,.85vh,11px) 16px;}
+  html:fullscreen #pergunta #qhead, html.fullscreen-active #pergunta #qhead {flex:0 0 auto;margin-top:clamp(3px,.6vh,8px);}
+  html:fullscreen #pergunta #qtext, html.fullscreen-active #pergunta #qtext {
+    flex:0 0 auto;min-height:0!important;padding:clamp(6px,1vh,14px) 0;
+    font-size:clamp(22px,1.65vw,35px);line-height:1.22;
+  }
+  html:fullscreen #pergunta #qcontrols:not(.hidden), html.fullscreen-active #pergunta #qcontrols:not(.hidden) {
+    flex:1 1 auto;min-height:0;display:flex;flex-direction:column;justify-content:stretch;
+  }
+  html:fullscreen #pergunta #individualAnswer:not(.hidden), html.fullscreen-active #pergunta #individualAnswer:not(.hidden),
+  html:fullscreen #pergunta #collectiveAnswer:not(.hidden), html.fullscreen-active #pergunta #collectiveAnswer:not(.hidden) {flex:0 0 auto;}
+  html:fullscreen #pergunta .answer-label, html.fullscreen-active #pergunta .answer-label {margin:clamp(3px,.5vh,7px) 0;}
+  html:fullscreen #pergunta .answer-buttons button, html.fullscreen-active #pergunta .answer-buttons button {padding:clamp(8px,1.3vh,17px);}
+  html:fullscreen #pergunta #collectiveAnswer label, html.fullscreen-active #pergunta #collectiveAnswer label {margin:clamp(3px,.5vh,7px) 0;}
+  html:fullscreen #pergunta #collectiveAnswer input, html.fullscreen-active #pergunta #collectiveAnswer input {padding:clamp(7px,.9vh,12px);}
+  html:fullscreen #pergunta .muted, html.fullscreen-active #pergunta .muted {margin:clamp(3px,.6vh,8px) 0;font-size:clamp(13px,.9vw,17px);}
+  html:fullscreen #pergunta .question-bottom-grid, html.fullscreen-active #pergunta .question-bottom-grid {
+    flex:1 1 auto;min-height:0!important;margin-top:clamp(8px,1.1vh,18px)!important;
+    gap:clamp(18px,2vw,40px);grid-template-columns:minmax(0,1fr) minmax(0,1fr);
+  }
+  html:fullscreen #pergunta .question-left, html.fullscreen-active #pergunta .question-left {min-height:0;}
+  html:fullscreen #pergunta .question-left label, html.fullscreen-active #pergunta .question-left label {
+    flex:0 0 auto;margin:0 0 clamp(5px,.7vh,10px);font-size:clamp(19px,1.35vw,27px)!important;
+  }
+  html:fullscreen #pergunta .question-left textarea, html.fullscreen-active #pergunta .question-left textarea {
+    flex:1 1 auto;min-height:70px!important;max-height:none;resize:none;
+    padding:clamp(9px,1.1vh,18px);font-size:clamp(18px,1.25vw,25px)!important;
+  }
+  html:fullscreen #pergunta .question-save-actions, html.fullscreen-active #pergunta .question-save-actions {
+    flex:0 0 auto;margin-top:clamp(7px,.9vh,14px);gap:clamp(7px,.9vh,12px);
+  }
+  html:fullscreen #pergunta .question-save-actions button, html.fullscreen-active #pergunta .question-save-actions button {
+    min-height:clamp(40px,5.3vh,66px)!important;
+  }
+  html:fullscreen #pergunta .question-right, html.fullscreen-active #pergunta .question-right {
+    min-height:0;grid-template-rows:minmax(0,1fr) minmax(0,1fr);gap:clamp(8px,1.1vh,16px);
+  }
+  html:fullscreen #pergunta .question-right article, html.fullscreen-active #pergunta .question-right article {
+    min-height:0;padding:clamp(12px,1.4vw,27px)!important;overflow:hidden;
+  }
+  html:fullscreen #pergunta .question-right article .pill, html.fullscreen-active #pergunta .question-right article .pill {font-size:clamp(17px,1.2vw,23px)!important;}
+  html:fullscreen #pergunta .question-right article p, html.fullscreen-active #pergunta .question-right article p {
+    font-size:clamp(20px,1.5vw,30px)!important;line-height:1.35;margin-top:clamp(6px,.9vh,13px)!important;
+  }
+}
+/* Para telas compactas, a rolagem continua permitida para evitar ocultar controles. */
+
+
+/* v28 — painel de pergunta compacto, sem barra de rolagem em monitores desktop.
+   Ativo na tela da pergunta, com ou sem modo fullscreen do navegador. */
+@media (min-width: 1100px) and (min-height: 650px) {
+  html:has(#pergunta:not(.hidden)), body:has(#pergunta:not(.hidden)) {height:100%;overflow:hidden;}
+  #appMain:has(#pergunta:not(.hidden)) {
+    height:100dvh!important;max-height:100dvh!important;min-height:0!important;
+    display:flex!important;flex-direction:column;overflow:hidden;
+    padding:clamp(7px,.8vh,12px) clamp(16px,1.4vw,30px) clamp(4px,.5vh,8px)!important;
+  }
+  #appMain:has(#pergunta:not(.hidden)) > header {flex:none;margin-bottom:5px!important;padding:0 155px 7px 0!important;}
+  #appMain:has(#pergunta:not(.hidden)) > header .eyebrow {font-size:clamp(15px,1.03vw,20px)!important;line-height:1.15;}
+  #appMain:has(#pergunta:not(.hidden)) > header h1 {font-size:clamp(25px,2vw,35px)!important;margin:3px 0!important;line-height:1.1;}
+  #appMain:has(#pergunta:not(.hidden)) > header .muted {font-size:11px;}
+  #appMain:has(#pergunta:not(.hidden)) .topstats {flex:none;margin:5px 0!important;font-size:11px;}
+  #appMain:has(#pergunta:not(.hidden)) > .bar {flex:none;height:5px;margin:0 0 5px!important;}
+  #appMain:has(#pergunta:not(.hidden)) > nav {flex:none;margin:4px 0 7px!important;}
+  #appMain:has(#pergunta:not(.hidden)) > nav button {padding:8px!important;font-size:13px;}
+  #appMain:has(#pergunta:not(.hidden)) > footer {flex:none;margin:4px 0 0!important;font-size:10px;}
+  #pergunta:not(.hidden) {
+    flex:1 1 0!important;min-height:0!important;height:auto!important;overflow:hidden;
+    display:flex;flex-direction:column;margin:3px 0 0!important;
+    padding:clamp(9px,1.2vh,15px) clamp(12px,1vw,20px)!important;
+  }
+  #pergunta #backWheel {flex:none;align-self:flex-start;padding:7px 14px;font-size:12px;}
+  #pergunta #qhead {flex:none;margin:3px 0 0;font-size:12px;}
+  #pergunta #qtext {flex:none;min-height:0!important;padding:clamp(8px,1.3vh,16px) 0!important;font-size:clamp(21px,1.5vw,28px);line-height:1.2;}
+  #pergunta #qcontrols:not(.hidden) {flex:1 1 0;min-height:0;display:flex;flex-direction:column;}
+  #pergunta #individualAnswer:not(.hidden),#pergunta #collectiveAnswer:not(.hidden) {flex:none;}
+  #pergunta .answer-label {margin:3px 0 5px;font-size:16px;}
+  #pergunta .answer-buttons button {padding:clamp(8px,1.2vh,13px);font-size:18px;}
+  #pergunta #collectiveAnswer label {margin:3px 0 5px;}
+  #pergunta #collectiveAnswer input {padding:7px;}
+  #pergunta .muted {font-size:13px!important;margin:5px 0!important;line-height:1.3;}
+  #pergunta .question-bottom-grid {
+    flex:1 1 0;min-height:0!important;grid-template-columns:minmax(0,1fr) minmax(0,1fr);
+    gap:clamp(12px,1.4vw,24px)!important;margin-top:clamp(8px,1vh,13px)!important;
+  }
+  #pergunta .question-left {min-height:0;display:flex;flex-direction:column;}
+  #pergunta .question-left label {flex:none;font-size:clamp(16px,1.1vw,21px)!important;margin:0 0 5px!important;line-height:1.2;}
+  #pergunta .question-left textarea {
+    flex:1 1 0;min-height:58px!important;max-height:none;resize:none;
+    font-size:clamp(15px,1.03vw,19px)!important;line-height:1.35;padding:11px!important;
+  }
+  #pergunta .question-left textarea::placeholder {font-size:clamp(13px,.9vw,16px)!important;}
+  #pergunta .question-save-actions {flex:none;gap:7px!important;margin-top:7px!important;}
+  #pergunta .question-save-actions button {min-height:clamp(37px,4.6vh,48px)!important;font-size:14px!important;padding:7px;}
+  #pergunta .question-right {min-height:0;grid-template-rows:minmax(0,1fr) minmax(0,1fr);gap:9px!important;}
+  #pergunta .question-right article {min-height:0;padding:clamp(10px,1vw,18px)!important;overflow:hidden;}
+  #pergunta .question-right article .pill {font-size:clamp(13px,.92vw,17px)!important;line-height:1.25;}
+  #pergunta .question-right article p {font-size:clamp(17px,1.18vw,22px)!important;line-height:1.3;margin-top:7px!important;}
+}
+/* Monitores baixos: compactar ainda mais sem cortar botões. */
+@media (min-width:1100px) and (min-height:650px) and (max-height:800px) {
+  #pergunta #qtext {padding:6px 0!important;font-size:21px;}
+  #pergunta .question-bottom-grid {margin-top:5px!important;}
+  #pergunta .question-save-actions button {min-height:35px!important;}
+  #pergunta .question-right article p {font-size:17px!important;}
+}
+
+
+/* v29 — legibilidade e distribuição equilibrada das telas */
+@media(min-width:1100px){
+  #appMain .topstats{font-size:clamp(13px,.84vw,16px)!important;gap:12px;line-height:1.3}
+  #appMain>nav button{font-size:clamp(14px,.9vw,17px)!important;font-weight:850}
+  #pergunta #backWheel{font-size:clamp(13px,.88vw,16px)!important;font-weight:800}
+  /* O relatório ocupa melhor a largura, sem deixar a coluna direita ociosa. */
+  #relatorio .report-grid{grid-template-columns:minmax(0,1.06fr) minmax(0,1fr);gap:clamp(18px,1.6vw,32px);align-items:stretch}
+  #relatorio .report-side{display:flex;flex-direction:column;min-width:0}
+  #relatorio .report-side>label{font-size:clamp(15px,.95vw,18px)}
+  #relatorio .report-side #className{font-size:clamp(15px,.92vw,18px);padding:11px 13px}
+  #relatorio .report-side #metrics{margin-top:clamp(10px,1.5vh,18px);display:grid;grid-template-rows:repeat(5,minmax(0,1fr));flex:1}
+  #relatorio .metric-row{padding:clamp(7px,.95vh,13px) 0;display:flex;flex-direction:column;justify-content:center}
+  #relatorio .metric-row strong{font-size:clamp(15px,1vw,19px);margin-bottom:4px}
+  #relatorio .metric-row small{font-size:clamp(12px,.83vw,15px);margin-bottom:7px}
+  #relatorio .report-actions{margin-top:clamp(10px,1.5vh,18px);gap:8px}
+  #relatorio .report-actions button{min-height:clamp(39px,4.6vh,52px)}
+  #relatorio .report-chart{min-height:0;align-self:stretch}
+  #relatorio .report-chart canvas{width:min(100%,min(68vh,740px));height:auto}
+}
+/* Evitar campo e caixas excessivamente altos sem perder o texto. */
+@media(min-width:1100px) and (min-height:650px){
+  #pergunta .question-bottom-grid{flex:0 1 auto!important;height:clamp(215px,34vh,330px)!important;min-height:0!important;align-self:stretch}
+  #pergunta #qcontrols:not(.hidden){justify-content:space-between}
+  #pergunta .question-left textarea{flex:1 1 auto;min-height:65px!important;max-height:clamp(110px,20vh,190px)!important}
+  #pergunta .question-right{grid-template-rows:repeat(2,minmax(0,1fr));gap:clamp(6px,.85vh,10px)!important}
+  #pergunta .question-right article{display:flex;flex-direction:column;justify-content:center;padding:clamp(10px,1vw,18px)!important}
+  #pergunta .question-right article p{margin-top:clamp(4px,.65vh,9px)!important;line-height:1.3}
+  #pergunta .question-save-actions{gap:clamp(5px,.7vh,9px)!important;margin-top:clamp(5px,.7vh,9px)!important}
+}
+@media(min-width:1100px) and (min-height:650px) and (max-height:760px){
+  #pergunta .question-bottom-grid{height:clamp(195px,30vh,250px)!important}
+  #pergunta .question-left textarea{max-height:120px!important}
+  #pergunta .question-right article p{font-size:clamp(16px,1.05vw,19px)!important}
+}
+
+
+/* v30 — a restrição de rolagem pertence EXCLUSIVAMENTE à tela da pergunta.
+   Roda, pentágono, banco e abertura mantêm rolagem natural. */
+@media (min-width:1100px) {
+  html:fullscreen:not(:has(#pergunta:not(.hidden))),
+  html:fullscreen:not(:has(#pergunta:not(.hidden))) body,
+  html.fullscreen-active:not(:has(#pergunta:not(.hidden))),
+  html.fullscreen-active:not(:has(#pergunta:not(.hidden))) body {
+    height:auto!important;min-height:100%!important;overflow-y:auto!important;overflow-x:hidden!important;
+  }
+  html:fullscreen #appMain:not(:has(#pergunta:not(.hidden))),
+  html.fullscreen-active #appMain:not(:has(#pergunta:not(.hidden))) {
+    height:auto!important;max-height:none!important;min-height:100dvh!important;
+    overflow:visible!important;display:block!important;
+    padding-bottom:clamp(22px,3vh,42px)!important;
+  }
+  html:fullscreen #appMain:not(:has(#pergunta:not(.hidden))) > footer,
+  html.fullscreen-active #appMain:not(:has(#pergunta:not(.hidden))) > footer {margin-top:18px!important;}
+  html:fullscreen #roda:not(.hidden), html.fullscreen-active #roda:not(.hidden),
+  html:fullscreen #relatorio:not(.hidden), html.fullscreen-active #relatorio:not(.hidden),
+  html:fullscreen #questoes:not(.hidden), html.fullscreen-active #questoes:not(.hidden) {
+    height:auto!important;max-height:none!important;overflow:visible!important;
+  }
+}
+/* Distribuição vertical equilibrada: ocupar o painel sem exagerar nas fontes ou deixar
+   um vazio desproporcional abaixo das caixas. */
+@media (min-width:1100px) and (min-height:650px) {
+  #appMain:has(#pergunta:not(.hidden)) #pergunta #qcontrols:not(.hidden) {
+    justify-content:flex-start!important;
+  }
+  #appMain:has(#pergunta:not(.hidden)) #pergunta .question-bottom-grid {
+    flex:1 1 auto!important;height:auto!important;max-height:none!important;
+    min-height:0!important;margin-top:clamp(9px,1.3vh,16px)!important;
+    padding-bottom:clamp(4px,.8vh,10px);
+    gap:clamp(14px,1.5vw,27px)!important;
+  }
+  #appMain:has(#pergunta:not(.hidden)) #pergunta .question-left textarea {
+    flex:1 1 auto!important;min-height:65px!important;max-height:none!important;
+    font-size:clamp(15px,1.05vw,19px)!important;
+  }
+  #appMain:has(#pergunta:not(.hidden)) #pergunta .question-right {
+    grid-template-rows:minmax(0,1fr) minmax(0,1fr)!important;
+    gap:clamp(7px,1vh,12px)!important;
+  }
+  #appMain:has(#pergunta:not(.hidden)) #pergunta .question-right article {
+    justify-content:center!important;padding:clamp(12px,1.1vw,21px)!important;
+  }
+  #appMain:has(#pergunta:not(.hidden)) #pergunta .question-right article .pill {
+    font-size:clamp(14px,.95vw,18px)!important;
+  }
+  #appMain:has(#pergunta:not(.hidden)) #pergunta .question-right article p {
+    font-size:clamp(17px,1.2vw,23px)!important;line-height:1.3!important;
+    margin-top:clamp(7px,1vh,12px)!important;
+  }
+  #appMain:has(#pergunta:not(.hidden)) #pergunta .question-save-actions button {
+    min-height:clamp(39px,4.8vh,52px)!important;
+  }
+}
+@media (min-width:1100px) and (min-height:650px) and (max-height:780px) {
+  #appMain:has(#pergunta:not(.hidden)) #pergunta #qtext {font-size:clamp(20px,1.5vw,26px)!important;padding:5px 0!important;}
+  #appMain:has(#pergunta:not(.hidden)) #pergunta .question-right article p {font-size:clamp(16px,1.1vw,20px)!important;}
+}
+
+
+/* v31 — melhor distribuição vertical exclusiva da tela das perguntas.
+   Reserva espaço para o cabeçalho, mantém todos os controles visíveis e
+   utiliza a área restante sem exagerar em fontes ou espaços vazios. */
+@media (min-width:1100px) and (min-height:650px) {
+  #appMain:has(#pergunta:not(.hidden)) {
+    padding-top:clamp(9px,1.1vh,15px)!important;
+    padding-bottom:clamp(7px,1vh,14px)!important;
+  }
+  #appMain:has(#pergunta:not(.hidden)) > header {
+    margin-bottom:clamp(6px,.9vh,11px)!important;
+    padding-bottom:clamp(7px,.9vh,11px)!important;
+  }
+  #appMain:has(#pergunta:not(.hidden)) > header .eyebrow {
+    font-size:clamp(17px,1.12vw,21px)!important;
+  }
+  #appMain:has(#pergunta:not(.hidden)) > header h1 {
+    font-size:clamp(27px,1.95vw,37px)!important;
+  }
+  #appMain:has(#pergunta:not(.hidden)) .topstats {
+    font-size:clamp(13px,.9vw,17px)!important;
+    margin:clamp(5px,.7vh,9px) 0!important;
+  }
+  #appMain:has(#pergunta:not(.hidden)) > nav {
+    margin:clamp(6px,.8vh,10px) 0 clamp(8px,1.2vh,15px)!important;
+  }
+  #appMain:has(#pergunta:not(.hidden)) > nav button {
+    padding:clamp(9px,1.2vh,14px) 8px!important;
+    font-size:clamp(14px,.93vw,17px)!important;
+  }
+  #appMain:has(#pergunta:not(.hidden)) #pergunta {
+    padding:clamp(12px,1.5vh,20px) clamp(14px,1.1vw,22px)!important;
+  }
+  #appMain:has(#pergunta:not(.hidden)) #pergunta #backWheel {
+    padding:clamp(8px,1vh,12px) clamp(15px,1vw,20px)!important;
+    font-size:clamp(14px,.9vw,17px)!important;
+  }
+  #appMain:has(#pergunta:not(.hidden)) #pergunta #qhead {
+    font-size:clamp(12px,.8vw,15px)!important;
+    margin-top:clamp(5px,.7vh,9px)!important;
+  }
+  #appMain:has(#pergunta:not(.hidden)) #pergunta #qtext {
+    padding:clamp(11px,2.3vh,25px) 0!important;
+    font-size:clamp(21px,1.55vw,29px)!important;
+  }
+  #appMain:has(#pergunta:not(.hidden)) #pergunta .question-bottom-grid {
+    margin-top:clamp(10px,1.5vh,18px)!important;
+    gap:clamp(14px,1.5vw,26px)!important;
+  }
+  #appMain:has(#pergunta:not(.hidden)) #pergunta .question-right article {
+    padding:clamp(12px,1.2vw,20px)!important;
+  }
+  #appMain:has(#pergunta:not(.hidden)) #pergunta .question-right article p {
+    font-size:clamp(17px,1.13vw,22px)!important;
+    margin-top:clamp(5px,.8vh,10px)!important;
+  }
+  #appMain:has(#pergunta:not(.hidden)) #pergunta .question-save-actions button {
+    min-height:clamp(38px,4.5vh,48px)!important;
+  }
+}
+@media (min-width:1100px) and (min-height:650px) and (max-height:760px) {
+  #appMain:has(#pergunta:not(.hidden)) #pergunta #qtext {
+    padding:clamp(6px,1vh,11px) 0!important;
+    font-size:clamp(20px,1.4vw,25px)!important;
+  }
+  #appMain:has(#pergunta:not(.hidden)) #pergunta .question-right article p {
+    font-size:clamp(16px,1vw,19px)!important;
+  }
+}
+
+/* v32 — rolagem permitida nas telas extensas, mesmo em modo tela cheia.
+   Apenas a tela de pergunta é ajustada à altura útil do monitor desktop. */
+html:fullscreen,html:fullscreen body,html.fullscreen-active,html.fullscreen-active body {overflow-y:auto!important;overflow-x:hidden!important;height:auto!important;min-height:100%!important;}
+html:fullscreen #appMain,html.fullscreen-active #appMain {height:auto!important;min-height:100dvh!important;max-height:none!important;overflow:visible!important;}
+html:fullscreen #roda:not(.hidden),html:fullscreen #relatorio:not(.hidden),html:fullscreen #questoes:not(.hidden),
+html.fullscreen-active #roda:not(.hidden),html.fullscreen-active #relatorio:not(.hidden),html.fullscreen-active #questoes:not(.hidden) {overflow:visible!important;max-height:none!important;height:auto!important;}
+@media (min-width:1100px) and (min-height:700px) {
+ html:fullscreen:has(#pergunta:not(.hidden)),html.fullscreen-active:has(#pergunta:not(.hidden)) {height:100dvh!important;overflow:hidden!important;}
+ html:fullscreen:has(#pergunta:not(.hidden)) body,html.fullscreen-active:has(#pergunta:not(.hidden)) body {height:100dvh!important;overflow:hidden!important;}
+ html:fullscreen #appMain:has(#pergunta:not(.hidden)),html.fullscreen-active #appMain:has(#pergunta:not(.hidden)) {height:100dvh!important;min-height:0!important;max-height:100dvh!important;overflow:hidden!important;}
+}
+@media (max-width:1099px), (max-height:699px) {
+ html:fullscreen #pergunta:not(.hidden),html.fullscreen-active #pergunta:not(.hidden) {height:auto!important;max-height:none!important;overflow:visible!important;}
+}
+
+/* v33 — painel de resultados: leitura e aproveitamento da área gráfica */
+#relatorio .report-grid{grid-template-columns:minmax(0,1.08fr) minmax(0,.92fr);gap:clamp(14px,1.35vw,28px)}
+#relatorio .report-chart{padding:clamp(5px,.7vw,12px);min-width:0}
+#relatorio .report-chart canvas{display:block;width:100%;max-width:820px;height:auto;max-height:none;object-fit:contain}
+#relatorio .metric-row{padding:clamp(9px,1.1vh,15px) 0}
+#relatorio .metric-title{display:flex;align-items:baseline;justify-content:space-between;gap:12px}
+#relatorio .metric-title strong{font-size:clamp(15px,1.04vw,20px);line-height:1.3}
+#relatorio .metric-value{font-size:clamp(21px,1.55vw,30px);font-weight:800;white-space:nowrap;font-variant-numeric:tabular-nums}
+#relatorio .metric-row small{font-size:clamp(12px,.86vw,16px);margin:5px 0 9px}
+#relatorio .metric-track{height:9px}
+#relatorio .reflection{margin-top:clamp(16px,2vh,28px);padding:clamp(16px,1.5vw,24px)}
+#relatorio .reflection p{font-size:clamp(14px,.94vw,17px);line-height:1.6;margin:10px 0}
+@media (max-width:900px){#relatorio .report-grid{grid-template-columns:1fr}}
+html:fullscreen #relatorio .report-chart canvas,html.fullscreen-active #relatorio .report-chart canvas{width:100%;max-width:820px}
+/* V36 — análise coletiva premium, com layout responsivo e rolagem em tela cheia */
+#intervencao{background:linear-gradient(145deg,#06182f,#082948);color:#eaf6ff;border:1px solid #1589bd;border-radius:18px;padding:20px;overflow-y:auto!important;max-height:none!important;height:auto!important}
+#intervencao .int-header{padding:12px 16px 18px;border-bottom:1px solid #28698d}#intervencao .int-header h2{font-size:clamp(23px,2.4vw,36px);color:#f0faff;margin:6px 0}#intervencao .int-header p{color:#b8d5e7}#intervencao .int-header button{margin-top:10px}
+#intervencao .int-notice{margin:15px 0;color:#b2d8e8;font-size:14px}#intervencao .int-overview{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:15px 0}#intervencao .int-overview>div{border:1px solid #2775a5;background:#103456;padding:15px;border-radius:12px;display:flex;flex-direction:column;gap:6px}#intervencao .int-overview span{color:#b4d2e5;font-size:13px}#intervencao .int-overview strong{font-size:26px;color:#64e5fa}
+#intervencao .int-layout{display:grid;grid-template-columns:minmax(300px,.85fr) minmax(430px,1.15fr);gap:16px;align-items:start}#intervencao .int-left,#intervencao .int-right{background:#09243f;border:1px solid #2477a7;border-radius:17px;padding:17px;min-width:0}#intervencao h3{color:#f2fbff;font-size:18px;margin:0 0 15px}#intervencao .int-axis{display:block;width:100%;background:#103350;border:1px solid #286c99;color:#f4faff;border-radius:12px;padding:14px;text-align:left;margin-bottom:10px;cursor:pointer}#intervencao .int-axis.active{border:2px solid #3acdfb;box-shadow:0 0 14px #17b8fa55}#intervencao .int-axis-head,#intervencao .int-q-title,#intervencao .int-selected{display:flex;justify-content:space-between;gap:12px;align-items:start}#intervencao .int-track{height:12px;border-radius:20px;background:#35536e;overflow:hidden;margin-top:10px}#intervencao .int-fill{height:100%;border-radius:20px;transition:width .3s ease}#intervencao .int-legend{display:flex;flex-wrap:wrap;gap:12px;margin:15px 0;font-size:13px}#intervencao .int-left small{color:#a9c9dd}#intervencao .int-selected{padding-bottom:12px;border-bottom:1px solid #31678b}#intervencao .int-selected strong{font-size:28px}#intervencao .int-question{padding:12px 2px;border-bottom:1px solid #275778}#intervencao .int-question small{color:#a9cfe6}#intervencao .int-q-title span{font-size:14px}#intervencao .int-q-title strong{white-space:nowrap}#intervencao .int-box{background:#113656;border:1px solid #2c83b1;border-radius:12px;padding:16px;margin-top:16px}#intervencao .int-box p{color:#d2e7f3;line-height:1.5}#intervencao .int-box h4{color:#74e4f5;margin:5px 0}#intervencao .int-box label{display:block;color:#e0f4ff;font-size:14px;margin:13px 0 5px}#intervencao .int-box textarea,#intervencao .int-box select,#intervencao .int-box input{width:100%;box-sizing:border-box;border:1px solid #4486a9;border-radius:8px;background:#061d34;color:white;padding:10px;font:inherit}#intervencao .int-fields{display:grid;grid-template-columns:1fr 1fr;gap:12px}#intervencao .int-actions{display:flex;flex-wrap:wrap;gap:10px;margin-top:14px}#intervencao .int-actions button{width:auto!important;flex:1;min-width:160px}#intervencao #intSaved{color:#80e7bd}
+@media(max-width:1000px){#intervencao .int-layout{grid-template-columns:1fr}}@media(max-width:560px){#intervencao{padding:10px}#intervencao .int-overview{grid-template-columns:1fr 1fr}#intervencao .int-fields{grid-template-columns:1fr}#intervencao .int-left,#intervencao .int-right{padding:12px}}
+/* V37 — Minhas Turmas */
+.class-manager{color:#e8f6ff}.cm-header{display:flex;justify-content:space-between;align-items:flex-start;gap:18px;flex-wrap:wrap}.cm-header h2{font-size:clamp(1.5rem,2.3vw,2.2rem);margin:.3rem 0}.cm-header p{color:#b5d1e5}.cm-header-actions,.cm-actions{display:flex;flex-wrap:wrap;gap:9px}.cm-header-actions button,.cm-actions button{width:auto;flex:1 1 auto;min-width:125px}.cm-notice{background:#123958;border:1px solid #2e779c;border-radius:12px;padding:12px;margin:14px 0;color:#c6e3f4}.cm-layout{display:grid;grid-template-columns:minmax(250px,.85fr) minmax(350px,1.35fr);gap:16px;margin-top:18px}.cm-list,.cm-details,.cm-form{background:linear-gradient(140deg,#0a2542,#0e3556);border:1px solid #2772a0;border-radius:15px;padding:18px}.cm-list h3,.cm-details h3,.cm-form h3{color:#80dffc;margin:0 0 15px}.cm-class{display:flex;flex-direction:column;gap:7px;width:100%;text-align:left;background:#123b5a;border:1px solid #2e6588;border-radius:10px;color:#fff;padding:14px;margin-bottom:10px}.cm-class.active{border:2px solid #42d7ff;background:#154a70;box-shadow:0 0 14px #13b5f833}.cm-class small,.cm-empty{color:#afcde0}.cm-stat{display:flex;gap:12px;flex-wrap:wrap;align-items:center;background:#143d5d;padding:14px;border-radius:10px;margin-bottom:16px}.cm-stat strong{color:#7be4f7}.cm-history-card{background:#102f4d;border:1px solid #2b6185;border-radius:12px;padding:14px;margin:12px 0}.cm-history-title{display:flex;justify-content:space-between;gap:8px;flex-wrap:wrap;margin-bottom:10px}.cm-history-title span{color:#a9cde4}.cm-form{margin:15px 0;max-width:700px}.cm-form input{margin:6px 0 12px}.cm-form .cm-actions{margin-top:12px}#cmStatus{color:#85e5dc;min-height:1.4em;margin-top:14px}#cmFile.hidden{display:none!important}@media(max-width:900px){.cm-layout{grid-template-columns:1fr}.cm-header-actions{width:100%}}
+
+/* V38 — seleção única e registro único por turma */
+.cm-choose{width:100%;min-height:46px;background:#164361;color:#f1faff;border:1px solid #45c6ef;border-radius:10px;padding:10px 12px;margin:8px 0 15px;font-size:1rem}.cm-select-label{font-size:.82rem;font-weight:700;color:#8bdef6}.cm-class.active{cursor:default}.cm-stat{justify-content:flex-start}.cm-history-card{margin-top:12px}.cm-history-title strong{color:#91e4f6}
+
+/* V39 — Confirmação de salvamento ao alternar turmas */
+.cm-modal-overlay{position:fixed;inset:0;z-index:99999;background:rgba(1,10,24,.84);display:flex;align-items:center;justify-content:center;padding:24px;backdrop-filter:blur(6px)}
+.cm-modal-overlay.hidden{display:none!important}.cm-modal{width:min(620px,100%);background:linear-gradient(145deg,#113a5a,#081c35);border:2px solid #39c8f4;border-radius:18px;padding:28px;box-shadow:0 0 35px #00a8ff55;color:#f2faff;text-align:center}.cm-modal-icon{font-size:38px;color:#ffbd55}.cm-modal h2{font-size:1.3rem;color:#7ce5ff;margin:10px 0}.cm-modal p{line-height:1.6;color:#d0e4f3}.cm-modal-actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:24px}.cm-modal-actions button{flex:1;min-width:145px;padding:13px 9px}@media(max-width:600px){.cm-modal-actions{flex-direction:column}}
+
+/* V41 — destaque da pergunta para projeção em sala de aula */
+#pergunta #qtext.question {
+  box-sizing:border-box;
+  width:100%;
+  max-width:1400px;
+  margin:14px auto 20px;
+  padding:clamp(20px,2.7vw,44px) clamp(22px,3.5vw,60px);
+  border:2px solid #36d9ff;
+  border-radius:20px;
+  background:linear-gradient(125deg,#083d69 0%,#086aa5 52%,#06436e 100%);
+  box-shadow:0 0 0 1px rgba(125,231,255,.24) inset,0 0 24px rgba(0,202,255,.32);
+  color:#fff;
+  text-align:center;
+  font-size:clamp(28px,3.1vw,54px);
+  font-weight:800;
+  line-height:1.22;
+  letter-spacing:.005em;
+  text-wrap:balance;
+  overflow-wrap:break-word;
+}
+@media (min-width:1100px) and (min-height:700px) {
+  html:fullscreen #pergunta #qtext.question,
+  html.fullscreen-active #pergunta #qtext.question {
+    font-size:clamp(36px,3.35vw,58px);
+    padding:clamp(18px,2.3vh,34px) clamp(26px,3vw,60px);
+    margin:8px auto 14px;
+    line-height:1.18;
+  }
+}
+@media (max-width:700px) {
+  #pergunta #qtext.question {
+    font-size:clamp(23px,5.5vw,36px);
+    padding:18px 16px;
+    line-height:1.25;
+  }
+}
+
+/* V43 — revelação sob demanda das pontes, sem distração na projeção */
+#pergunta .bridge-reveal {
+  display:inline-flex!important;align-items:center;justify-content:center;
+  align-self:center;min-width:112px;min-height:43px;
+  margin:10px auto 4px;padding:9px 22px;
+  border:1.5px solid #43ddff;border-radius:12px;
+  background:linear-gradient(120deg,#075a8c,#087fb6);
+  color:#fff;font-size:clamp(15px,1.15vw,20px);font-weight:800;
+  letter-spacing:.09em;cursor:pointer;
+  box-shadow:0 0 14px rgba(18,211,255,.3);
+}
+#pergunta .bridge-reveal:hover,#pergunta .bridge-reveal:focus-visible {
+  background:#0c9bcb;box-shadow:0 0 20px rgba(18,211,255,.55);
+}
+#pergunta .bridge-concealed[hidden] {display:none!important;}
+#pergunta .bridge-concealed:not([hidden]) {
+  display:block!important;max-height:clamp(90px,15vh,170px);
+  overflow-y:auto;overflow-wrap:break-word;margin:8px 0 0!important;
+  text-align:center;
+}
+#pergunta .question-right article {justify-content:center;}
+@media (max-width:700px) {
+  #pergunta .bridge-reveal {min-height:44px;min-width:100px;}
+  #pergunta .bridge-concealed:not([hidden]) {max-height:none;overflow:visible;}
+}

@@ -1,1 +1,216 @@
-window.RODA_DATA={"groups": ["Senhas, contas e autenticação", "Segurança digital na escola", "Vida pessoal e redes sociais", "Primeiro emprego e pequenas empresas", "LGPD, direitos e cidadania digital"], "questions": [{"g": 0, "q": "Você utiliza senhas diferentes e difíceis de adivinhar para proteger suas principais contas digitais?", "orientation": "O que pode acontecer quando utilizamos a mesma senha em diferentes serviços?", "observation": "Use senhas longas e exclusivas. Um gerenciador de senhas confiável pode ajudar; nunca registre senhas nas observações."}, {"g": 0, "q": "Você mantém suas senhas em segredo, evitando compartilhá-las até mesmo com amigos ou colegas?", "orientation": "Como ajudar alguém que precisa acessar um serviço sem revelar sua senha?", "observation": "Cada pessoa deve usar seu próprio acesso. Compartilhar senhas impede identificar responsabilidades e amplia riscos."}, {"g": 0, "q": "Você utiliza seu próprio perfil de usuário nos computadores compartilhados, evitando acessar arquivos e contas de outras pessoas?", "orientation": "Qual é a diferença entre o perfil de um computador e uma conta de e-mail ou aplicativo?", "observation": "Perfil do computador separa ambientes locais; conta de serviço identifica acesso online. Ambos precisam de proteção."}, {"g": 0, "q": "Você já ativou a autenticação em dois fatores nas suas principais contas digitais?", "orientation": "Por que essa proteção é importante mesmo quando utilizamos senhas fortes?", "observation": "Ative autenticação multifator, preferindo passkeys, aplicativos autenticadores ou chaves de segurança quando disponíveis. Nunca compartilhe códigos."}, {"g": 1, "q": "Você costuma sair das suas contas e encerrar as sessões depois de utilizar computadores compartilhados na escola?", "orientation": "O que pode acontecer quando deixamos o e-mail ou uma plataforma escolar conectada?", "observation": "Sair da conta, fechar sessões e evitar salvar senhas em computadores compartilhados protege arquivos e mensagens."}, {"g": 1, "q": "Antes de utilizar uma plataforma educacional, você verifica se realmente precisa criar uma conta ou fornecer dados pessoais?", "orientation": "Quais vantagens uma ferramenta sem cadastro pode oferecer? Ela é automaticamente segura?", "observation": "A ausência de cadastro pode reduzir coleta de dados, mas não garante segurança. Avalie privacidade, finalidade e confiabilidade."}, {"g": 1, "q": "Você pede autorização antes de compartilhar fotografias, trabalhos ou informações pessoais de colegas?", "orientation": "Quais consequências podem surgir quando informações de outras pessoas são divulgadas sem autorização?", "observation": "Respeite privacidade, contexto e autorização; evite publicar imagens, notas e dados de colegas sem base apropriada."}, {"g": 1, "q": "Você procura orientação de um professor ou responsável quando uma plataforma escolar solicita dados pessoais que parecem desnecessários?", "orientation": "Como identificar quais informações são realmente necessárias para realizar uma atividade?", "observation": "Questione coleta excessiva e peça apoio à escola. A LGPD valoriza finalidade, necessidade e proteção especial de menores."}, {"g": 2, "q": "Você verifica a origem de mensagens e links antes de clicar em ofertas, promoções ou avisos recebidos pela internet?", "orientation": "Quais sinais podem indicar uma tentativa de golpe digital?", "observation": "Desconfie de urgência, prêmios improváveis e endereços suspeitos. Acesse serviços digitando o endereço oficial."}, {"g": 2, "q": "Você utiliza as configurações de privacidade das redes sociais para controlar quem pode visualizar suas informações e publicações?", "orientation": "Quais informações pessoais não deveriam ficar disponíveis publicamente?", "observation": "Revise público, marcações e localização. Mesmo perfis privados exigem cuidado com capturas de tela e compartilhamentos."}, {"g": 2, "q": "Você verifica as permissões solicitadas pelos aplicativos antes de permitir acesso à câmera, ao microfone, aos contatos ou à localização?", "orientation": "Um aplicativo de calculadora precisa ter acesso aos seus contatos?", "observation": "Conceda apenas permissões compatíveis com a função do aplicativo e revise-as periodicamente."}, {"g": 2, "q": "Você confirma a identidade de uma pessoa por outro meio confiável antes de realizar transferências ou compartilhar informações solicitadas por mensagens suspeitas?", "orientation": "Como identificar uma tentativa de golpe envolvendo a identidade de amigos ou familiares?", "observation": "Confirme por chamada ou canal já conhecido. Mensagens podem vir de contas invadidas ou perfis falsos."}, {"g": 3, "q": "Você sabe que não deve compartilhar senhas profissionais e que cada funcionário deve utilizar suas próprias credenciais de acesso?", "orientation": "Como colaborar com um colega sem comprometer a segurança dos sistemas da empresa?", "observation": "Use contas individuais e permissões adequadas. Solicite acesso autorizado em vez de emprestar credenciais."}, {"g": 3, "q": "Você evita compartilhar documentos ou planilhas contendo dados pessoais de outras pessoas sem autorização e uma finalidade legítima?", "orientation": "Quais cuidados uma pequena empresa deve ter com nomes, telefones e endereços de clientes?", "observation": "Restrinja acesso conforme necessidade, use canais aprovados e evite enviar planilhas de clientes em grupos informais."}, {"g": 3, "q": "Você verifica a autenticidade de solicitações recebidas por e-mail ou mensagens antes de enviar documentos ou informações importantes?", "orientation": "Como agir quando uma mensagem aparentemente enviada pelo gerente solicita dados com urgência?", "observation": "Confirme pedidos urgentes por canal independente, sobretudo quando envolvem pagamentos, dados ou anexos."}, {"g": 3, "q": "Você costuma bloquear a tela do computador ou celular quando se afasta, impedindo que outras pessoas acessem suas informações?", "orientation": "Por que essa prática também é importante em escritórios, lojas e pequenas empresas?", "observation": "Bloquear a tela reduz acesso indevido a dados e sistemas. Configure também bloqueio automático."}, {"g": 4, "q": "Você procura fornecer somente os dados pessoais necessários ao utilizar aplicativos, plataformas e serviços digitais?", "orientation": "Por que uma plataforma educacional precisaria solicitar CPF, endereço ou telefone para realizar uma atividade simples?", "observation": "O princípio da necessidade orienta coletar apenas dados adequados à finalidade. Questione pedidos excessivos."}, {"g": 4, "q": "Você evita inserir senhas, documentos pessoais e informações confidenciais suas ou de outras pessoas em ferramentas de inteligência artificial?", "orientation": "Quais cuidados devemos ter ao utilizar IA para elaborar currículos, trabalhos escolares ou documentos profissionais?", "observation": "Não cole senhas, documentos, dados de alunos ou clientes em IA sem autorização e avaliação institucional; prefira exemplos fictícios."}, {"g": 4, "q": "Você procura verificar para qual finalidade seus dados pessoais serão utilizados antes de fornecê-los a uma empresa ou plataforma?", "orientation": "Como a LGPD contribui para que as pessoas tenham mais informações sobre o uso de seus dados?", "observation": "Leia avisos de privacidade e identifique finalidade, responsável e canais de atendimento. Transparência é essencial."}, {"g": 4, "q": "Você sabe como solicitar acesso ou correção de informações pessoais incorretas mantidas por uma empresa ou instituição?", "orientation": "Por que é importante conhecer nossos direitos sobre os dados pessoais?", "observation": "O art. 18 da LGPD prevê acesso e correção. Procure o canal de privacidade/encarregado, registre o pedido e guarde protocolo."}]};
+
+const groups=["Senhas e contas", "Segurança na escola", "Vida pessoal e redes", "Primeiro emprego", "LGPD e cidadania"], questions=[{"g": 0, "q": "Você utiliza a mesma senha para acessar diferentes contas, como e-mail, redes sociais e plataformas escolares?", "m": "Se alguém descobrir uma dessas senhas, quais outras contas poderão ficar vulneráveis?", "a": "Criar senhas diferentes e fortes para cada conta, preferencialmente com um gerenciador de senhas.", "positive": false}, {"g": 0, "q": "Você já compartilhou alguma senha pessoal com amigos, colegas ou familiares?", "m": "Como ajudar alguém a acessar um serviço sem precisar revelar sua senha?", "a": "Evitar compartilhar senhas e utilizar recursos oficiais de acesso e recuperação.", "positive": false}, {"g": 0, "q": "Você sabe que criar um perfil de usuário no computador é diferente de criar uma conta em um site ou aplicativo?", "m": "Como perfis separados ajudam a proteger arquivos em computadores compartilhados?", "a": "Identificar perfis locais e contas on-line; utilizar sessões individuais e encerrar o acesso após o uso.", "positive": true}, {"g": 0, "q": "Você já ativou a autenticação em dois fatores em alguma conta pessoal?", "m": "Por que uma senha forte pode não ser suficiente para impedir acessos indevidos?", "a": "Ativar a autenticação em dois fatores nas contas que oferecem esse recurso.", "positive": true}, {"g": 1, "q": "Você já deixou seu e-mail ou alguma plataforma escolar conectada depois de utilizar um computador compartilhado?", "m": "O que outra pessoa poderia acessar caso encontrasse sua conta aberta?", "a": "Encerrar a sessão e bloquear a tela ao terminar o uso de computadores compartilhados.", "positive": false}, {"g": 1, "q": "Você já utilizou alguma ferramenta educacional que não exigia criar uma conta com e-mail e senha?", "m": "Quais vantagens isso oferece? Uma ferramenta sem cadastro é necessariamente segura?", "a": "Preferir ferramentas que coletem somente dados necessários e verificar suas práticas de privacidade.", "positive": true}, {"g": 1, "q": "Você já compartilhou ou recebeu, em grupos de mensagens, fotografias, notas ou informações pessoais de colegas sem autorização?", "m": "Quais consequências podem surgir quando informações de outras pessoas circulam sem seu conhecimento?", "a": "Pedir autorização antes de divulgar informações de colegas e evitar encaminhamentos indevidos.", "positive": false}, {"g": 1, "q": "Você já utilizou uma plataforma escolar que solicitou dados pessoais que pareciam desnecessários para realizar uma atividade?", "m": "Como descobrir por que essas informações estão sendo solicitadas?", "a": "Questionar a finalidade da coleta e consultar a escola ou o responsável pela plataforma.", "positive": false}, {"g": 2, "q": "Você já recebeu mensagens informando que ganhou um prêmio ou benefício, mas precisava clicar em um link para recebê-lo?", "m": "Como identificar sinais de uma tentativa de golpe digital?", "a": "Verificar remetente e endereço, desconfiar de urgência e não abrir links suspeitos.", "positive": false}, {"g": 2, "q": "Você já teve alguma fotografia ou informação pessoal publicada nas redes sociais sem sua autorização?", "m": "Como o respeito à privacidade deve orientar nossas atitudes nas redes sociais?", "a": "Solicitar a retirada do conteúdo e buscar apoio de pessoas ou canais de confiança.", "positive": false}, {"g": 2, "q": "Você costuma verificar as permissões solicitadas pelos aplicativos antes de instalá-los no celular?", "m": "Um aplicativo de calculadora realmente precisa acessar seus contatos e sua localização?", "a": "Revisar permissões e permitir somente acessos necessários à função do aplicativo.", "positive": true}, {"g": 2, "q": "Você já recebeu alguma mensagem suspeita, aparentemente enviada por um familiar, amigo ou conhecido, solicitando dinheiro ou informações pessoais?", "m": "Como confirmar a identidade de alguém antes de transferir dinheiro ou compartilhar dados?", "a": "Confirmar a solicitação por outro canal antes de realizar qualquer transferência.", "positive": false}, {"g": 3, "q": "Você emprestaria sua senha profissional a um colega de trabalho que precisasse acessar o sistema da empresa?", "m": "Como colaborar com um colega sem comprometer a segurança das informações da empresa?", "a": "Usar credenciais individuais e solicitar ao responsável a autorização de acesso adequada.", "positive": false}, {"g": 3, "q": "Você considera necessário proteger planilhas e documentos que contenham nomes, telefones, endereços e outras informações de clientes?", "m": "Quem deveria acessar essas informações? Quais riscos existem ao compartilhá-las em grupos?", "a": "Restringir acesso a pessoas autorizadas e compartilhar arquivos apenas por canais adequados.", "positive": true}, {"g": 3, "q": "Você verificaria a autenticidade de um e-mail antes de enviar informações de clientes ou documentos importantes da empresa?", "m": "Como agir quando uma mensagem aparentemente do gerente exige informações urgentes?", "a": "Conferir remetente e pedido por canal independente antes de enviar documentos.", "positive": true}, {"g": 3, "q": "Você bloquearia a tela de um computador da empresa antes de se afastar, mesmo por poucos minutos?", "m": "Quais problemas podem ocorrer quando informações de clientes ficam expostas?", "a": "Bloquear a tela ao se afastar e adotar práticas de mesa e tela limpas.", "positive": true}, {"g": 4, "q": "Você já questionou por que uma plataforma solicita seu CPF, telefone ou endereço para utilizar um serviço aparentemente simples?", "m": "Uma ferramenta educacional precisa conhecer todos esses dados para oferecer uma atividade?", "a": "Verificar a necessidade e a finalidade dos dados solicitados antes de fornecê-los.", "positive": true}, {"g": 4, "q": "Você já inseriu informações pessoais suas ou de outras pessoas em ferramentas de inteligência artificial, como ChatGPT ou Gemini?", "m": "Quais informações devem ser protegidas ao usar IA para produzir currículos, relatórios ou atividades?", "a": "Não inserir dados pessoais de terceiros ou informações sensíveis sem necessidade e base adequada.", "positive": false}, {"g": 4, "q": "Você considera importante saber para qual finalidade uma empresa ou aplicativo utilizará seus dados pessoais?", "m": "Uma organização pode usar informações coletadas para qualquer finalidade?", "a": "Consultar avisos de privacidade e exigir informações claras sobre as finalidades de uso.", "positive": true}, {"g": 4, "q": "Você sabia que pode solicitar a uma organização o acesso e a correção de informações pessoais incorretas que ela mantém sobre você?", "m": "Como exercer esse direito e a quem recorrer quando uma informação estiver errada?", "a": "Procurar o canal de privacidade da organização e exercer os direitos previstos na LGPD.", "positive": true}],colors=['#2563eb','#0891b2','#0d9488','#7c3aed','#c08422'];let state={used:[],active:-1,counts:{},notes:{},className:'',total:10,mode:null};try{const s=JSON.parse(localStorage.getItem('rodaLGPDPremiumV10'));if(s&&Array.isArray(s.used))state={...state,...s}}catch(e){};const $=id=>document.getElementById(id);const saveState=()=>{state.className=$('className').value;state.total=state.mode==='individual'?1:Math.max(1,Number($('total').value)||10);try{localStorage.setItem('rodaLGPDPremiumV10',JSON.stringify(state))}catch(e){}};
+function syncModeNavigation(){
+ const individual=state.mode==='individual';
+ const collective=state.mode==='collective';
+ document.querySelectorAll('nav button[data-tab="turmas"], #turmas').forEach(node=>{
+   if(node.id==='turmas') {if(individual)node.classList.add('hidden');return;}
+   node.classList.toggle('hidden',!collective);
+   node.setAttribute('aria-hidden',String(!collective));
+ });
+ const classField=document.getElementById('reportClassField');
+ if(classField)classField.classList.toggle('hidden',individual);
+ if(individual){state.className='';$('className').value='';}
+}
+function setMode(mode,reset=false){
+ if(!['individual','collective'].includes(mode))return;
+ if(reset){state={used:[],active:-1,counts:{},notes:{},className:'',total:mode==='individual'?1:10,mode};lastGroup=-1;angle=0;wheel(0);$('className').value='';$('spinMessage').textContent='';}
+ state.mode=mode;if(mode==='individual')state.total=1;
+ $('welcome').classList.add('hidden');$('appMain').classList.remove('hidden');
+ $('collectiveTotal').classList.toggle('hidden',mode==='individual');
+ $('individualAnswer').classList.toggle('hidden',mode!=='individual');
+ $('collectiveAnswer').classList.toggle('hidden',mode==='individual');
+ $('modeIndicator').textContent=mode==='individual'?'EXPERIÊNCIA INDIVIDUAL':'EXPERIÊNCIA COLETIVA';
+ document.querySelector('#roda .intro').textContent=mode==='individual'?'Uma questão por vez, alternando os cinco eixos. Responda SIM ou NÃO, explore a mediação e registre seus comentários para refletir sobre suas competências e possibilidades de desenvolvimento.':'Uma questão por vez, alternando os cinco eixos. Registre quantos estudantes responderam SIM, explore a mediação e registre comentários para promover o diálogo e identificar possibilidades de intervenção interdisciplinar.';
+ $('totalCaption').textContent=mode==='individual'?'Participação:':'Participantes:';
+ $('totalChangeHint').textContent=mode==='individual'?'Respostas individuais.':'Para alterar, volte à tela da roda.';
+ $('total').value=state.total;syncModeNavigation();saveState();update();tab('roda');
+}
+$('backWheel').onclick=()=>{tab('roda')};
+$('chooseIndividual').onclick=()=>setMode('individual',true);
+$('chooseCollective').onclick=()=>setMode('collective',true);
+$('fullScreen').onclick=async()=>{try{if(!document.fullscreenElement)await document.documentElement.requestFullscreen();else await document.exitFullscreen()}catch(e){alert('O navegador não permitiu a tela cheia.')}};
+function selectAnswer(n){$('count').value=String(n);$('answerYes').classList.toggle('selected',n===1);$('answerNo').classList.toggle('selected',n===0);saveCurrent()}
+$('answerYes').onclick=()=>selectAnswer(1);$('answerNo').onclick=()=>selectAnswer(0);
+function tab(name){if(name==='turmas'&&state.mode!=='collective')name='roda';document.querySelectorAll('main>section[id]').forEach(s=>{if(['roda','pergunta','questoes','relatorio','intervencao','turmas'].includes(s.id))s.classList.toggle('hidden',s.id!==name)});document.querySelectorAll('nav button').forEach(b=>b.classList.toggle('on',b.dataset.tab===name));if(name==='relatorio')radar();if(name==='questoes')list();if(name==='intervencao'&&typeof renderIntervention==='function')renderIntervention();if(name==='turmas'&&typeof renderClasses==='function')renderClasses()};document.querySelectorAll('nav button').forEach(b=>b.onclick=()=>tab(b.dataset.tab));
+// Setores giram, mas seus rótulos permanecem sempre legíveis; miolo é fixo.
+function wheel(rotation=angle){
+ const c=$('wheel'),x=c.getContext('2d'),cx=250,cy=250,r=214;
+ const rot=rotation*Math.PI/180;
+ x.clearRect(0,0,500,500);
+ for(let i=0;i<5;i++){
+  const a=-Math.PI/2+i*2*Math.PI/5+rot,b=a+2*Math.PI/5,mid=(a+b)/2;
+  x.beginPath();x.moveTo(cx,cy);x.arc(cx,cy,r,a,b);x.closePath();
+  x.fillStyle=colors[i];x.fill();x.strokeStyle='#071525';x.lineWidth=5;x.stroke();
+  // Letras verticais, nunca invertidas, inclusive no eixo sorteado.
+  const labels=[['PROTAGONISMO'],['TECNOLOGIA'],['ENEM'],['CARREIRA'],['LAZER E','TEMPO LIVRE']][i];
+  const tx=cx+145*Math.cos(mid),ty=cy+145*Math.sin(mid);
+  x.save();x.translate(tx,ty);x.textAlign='center';x.textBaseline='middle';
+  x.fillStyle='#fff';x.font='bold 16px system-ui';
+  labels.forEach((line,j)=>x.fillText(line,0,(j-(labels.length-1)/2)*21,118));
+  x.restore();
+ }
+ // Disco central permanece imóvel, sem encostar nas divisórias.
+ x.beginPath();x.arc(cx,cy,86,0,Math.PI*2);x.fillStyle='#112742';x.fill();
+ x.strokeStyle='#f5d17d';x.lineWidth=6;x.stroke();
+ x.textAlign='center';x.textBaseline='middle';x.font='bold 19px system-ui';
+ x.fillStyle='#fff';x.fillText('RODA DAS',cx,cy-15);
+ x.fillStyle='#58dce9';x.font='bold 17px system-ui';x.fillText('COMPETÊNCIAS',cx,cy+15);
+}
+let isSpinning=false,angle=0,lastGroup=state.active>=0?questions[state.active].g:-1;
+function select(i){if(isSpinning)return;if(!state.used.includes(i))state.used.push(i);state.active=i;lastGroup=questions[i].g;saveState();update();tab('pergunta')}
+function spin(){if(isSpinning)return;const rest=questions.map((_,i)=>i).filter(i=>!state.used.includes(i));if(!rest.length){alert('As 20 perguntas já foram realizadas.');return}
+// Enquanto existirem questões de outros eixos, nunca repetir o eixo imediatamente anterior.
+let eligible=rest.filter(i=>questions[i].g!==lastGroup);if(!eligible.length)eligible=rest;
+const i=eligible[Math.floor(Math.random()*eligible.length)],g=questions[i].g;
+isSpinning=true;tab('roda');$('spin').disabled=true;$('next').disabled=true;$('spinMessage').textContent='A roda está girando…';
+// Centro do setor g está em -54 + 72*g graus; alinhar ao indicador fixo no topo.
+const desired=-36-72*g;const normalized=((desired-angle)%360+360)%360;
+angle+=360*5+normalized;
+const from=angle-(360*5+normalized),to=angle,start=performance.now(),duration=3100;
+ function animate(now){const t=Math.min(1,(now-start)/duration);const eased=1-Math.pow(1-t,4);
+ wheel(from+(to-from)*eased);if(t<1)requestAnimationFrame(animate);}
+ requestAnimationFrame(animate);
+setTimeout(()=>{isSpinning=false;state.used.push(i);state.active=i;lastGroup=g;saveState();update();$('next').disabled=false;$('spinMessage').textContent='Eixo sorteado: '+groups[g];tab('pergunta')},5100);
+}
+function saveCurrent(){
+ if(state.active<0)return true;
+ const raw=$('count').value.trim();
+ if(raw!==''){
+  const n=Number(raw);
+  if(!Number.isInteger(n)||n<0||n>state.total){alert('Informe um número inteiro de respostas alinhadas às boas práticas entre 0 e '+state.total+'.');$('count').focus();return false}
+  state.counts[state.active]=n;
+ }else{delete state.counts[state.active]}
+ state.notes[state.active]=$('note').value;saveState();return true;
+}
+$('spin').onclick=()=>{if(state.active>=0){alert('Para avançar, utilize SALVAR E SORTEAR PRÓXIMA PERGUNTA na questão atual.');tab('pergunta');return}spin()};
+$('next').onclick=()=>{if(state.active<0)return; if($('count').value.trim()===''){alert('Registre e confirme a resposta SIM ou NÃO antes de continuar.');$('count').focus();return}if(saveCurrent())spin()};
+$('save').onclick=()=>{if(saveCurrent())alert('Registro salvo com sucesso.')};
+$('last').onclick=()=>{if(state.active>=0)tab('pergunta')};
+$('count').onchange=()=>{};
+$('note').onchange=()=>{};
+$('className').onchange=saveState;
+$('total').onchange=()=>{
+ const n=Number($('total').value);
+ if(!Number.isInteger(n)||n<1){alert('Informe uma quantidade válida de participantes.');$('total').value=state.total;return}
+ if(Object.values(state.counts).some(v=>v>n)){if(!confirm('Algumas questões possuem mais respostas alinhadas às boas práticas do que o novo total. Esses registros serão removidos. Continuar?')){$('total').value=state.total;return}Object.keys(state.counts).forEach(k=>{if(state.counts[k]>n)delete state.counts[k]})}
+ saveState();$('totalSummary').textContent=state.total;radar();
+};
+function list(){
+ const target=$('list');target.replaceChildren();
+ questions.forEach((q,i)=>{
+  const unlocked=state.used.includes(i), answered=state.counts[i]!==undefined;
+  const b=document.createElement('button');
+  b.className='item bank-question'+(unlocked?' unlocked':' locked');
+  b.disabled=!unlocked;
+  const status=document.createElement('span');status.className='bank-status';
+  status.textContent=!unlocked?'🔒 NÃO SORTEADA':answered?'✓ RESPONDIDA':'○ SORTEADA · SEM RESPOSTA';
+  const content=document.createElement('span');content.className='bank-content';
+  const title=document.createElement('strong');title.textContent=(i+1)+'. '+groups[q.g];
+  const question=document.createElement('span');question.textContent=unlocked?q.q:'Questão disponível após o sorteio';
+  content.append(title,question);b.append(status,content);
+  if(unlocked)b.onclick=()=>{saveCurrent();select(i)};
+  target.appendChild(b);
+ });
+}
+let lastBridgeQuestion=null;
+function hideBridge(id,buttonId){const el=$(id),btn=$(buttonId);if(!el||!btn)return;el.hidden=true;btn.textContent='VER';btn.setAttribute('aria-expanded','false');}
+function resetBridges(){hideBridge('med','showMed');hideBridge('action','showAction');}
+function toggleBridge(id,buttonId){const el=$(id),btn=$(buttonId);if(!el||!btn)return;const willOpen=el.hidden;el.hidden=!willOpen;btn.textContent=willOpen?'OCULTAR':'VER';btn.setAttribute('aria-expanded',String(willOpen));}
+$('showMed').addEventListener('click',()=>toggleBridge('med','showMed'));
+$('showAction').addEventListener('click',()=>toggleBridge('action','showAction'));
+function update(){if(state.active!==lastBridgeQuestion){resetBridges();lastBridgeQuestion=state.active;}const completed=Object.keys(state.counts).filter(k=>state.counts[k]!==null&&state.counts[k]!==undefined).length;const yesTotal=Object.values(state.counts).reduce((sum,n)=>sum+(Number(n)||0),0);$('counterTop').textContent=state.used.length+' de 20 questões sorteadas';$('answersTop').textContent=completed+' respostas registradas';$('scoreTop').textContent=yesTotal+' respostas alinhadas às boas práticas · '+state.total+' '+(state.total===1?'participante':'participantes');$('progress').style.width=(state.used.length*5)+'%';$('spin').disabled=state.used.length===20||isSpinning||state.active>=0;$('last').disabled=state.active<0;$('totalSummary').textContent=state.total;if(state.active>=0){const i=state.active,q=questions[i];$('qhead').textContent='QUESTÃO '+(i+1)+' • '+groups[q.g];$('qtext').textContent=q.q;$('med').textContent=q.m;$('action').textContent=q.a;$('count').value=state.counts[i]??'';$('answerYes').classList.toggle('selected',state.counts[i]===1);$('answerNo').classList.toggle('selected',state.counts[i]===0);$('note').value=state.notes[i]||'';$('qcontrols').classList.remove('hidden')}else{$('qhead').textContent='';$('qtext').textContent='Gire a roda para começar.';$('qcontrols').classList.add('hidden')}}
+function goodCount(i){if(state.counts[i]===undefined)return null;return questions[i].positive?Number(state.counts[i]):state.total-Number(state.counts[i])}
+function scores(){return groups.map((_,g)=>{let ids=questions.map((q,i)=>q.g===g?i:-1).filter(i=>i>=0&&state.counts[i]!==undefined);return ids.length?Math.round(100*ids.reduce((a,i)=>a+goodCount(i),0)/(ids.length*state.total)):null})}
+function reflectionData(){
+ const v=scores();
+ const entries=v.map((value,g)=>({g,value,ids:questions.map((q,i)=>q.g===g&&state.counts[i]!==undefined?i:-1).filter(i=>i>=0)})).filter(x=>x.value!==null);
+ const intro='Este relatório comentado pretende auxiliar na reflexão sobre as boas práticas de proteção de dados e cidadania digital e orientar novas aprendizagens. As questões possuem respostas protetivas SIM ou NÃO, conforme o enunciado. Não avalia nem classifica participantes.';
+ if(!entries.length)return [intro,'Ainda não há respostas registradas. À medida que a experiência avançar, esta seção apresentará uma apreciação dos eixos e sugestões de mediação e encaminhamento.'];
+ const max=Math.max(...entries.map(x=>x.value)),min=Math.min(...entries.map(x=>x.value));
+ const strongest=entries.filter(x=>x.value===max),focus=entries.filter(x=>x.value===min);
+ const names=items=>items.map(x=>groups[x.g]).join(', ');
+ const paragraphs=[intro];
+ if(max>=75)paragraphs.push('Pontos de apoio: '+names(strongest)+' apresenta(m) '+max+'% de respostas alinhadas às boas práticas. Reconheça as experiências já desenvolvidas e procure aplicá-las também a outras dimensões do projeto de vida.');
+ else if(max>=50)paragraphs.push('Há experiências importantes em '+names(strongest)+' ('+max+'% de respostas alinhadas às boas práticas). Elas podem servir de ponto de partida para fortalecer hábitos e ampliar oportunidades.');
+ else paragraphs.push('As respostas registradas convidam à construção gradual de novas experiências. Valorize o que já foi realizado e escolha uma ação pequena, concreta e possível para começar.');
+ if(min<max){
+  const selected=focus.flatMap(x=>x.ids).slice(0,2);
+  const mediation=[...new Set(selected.map(i=>questions[i].m))];
+  const actions=[...new Set(selected.map(i=>questions[i].a))];
+  paragraphs.push('Próximo foco: '+names(focus)+' ('+min+'% de respostas alinhadas às boas práticas). Para a mediação, reflita: '+(mediation[0]||'O que poderia favorecer novas experiências neste eixo?')+' Encaminhamento sugerido: '+(actions[0]||'Definir uma meta viável e acompanhar seu progresso.'));
+ }else{
+  const selected=entries.flatMap(x=>x.ids).slice(0,2);
+  paragraphs.push('Os eixos com registros apresentam percentuais semelhantes. Para avançar, discuta: '+(selected.length?questions[selected[0]].m:'Quais competências deseja desenvolver?')+' Encaminhamento: '+(selected.length?questions[selected[0]].a:'Definir uma meta de aprendizagem.'));
+ }
+ if(entries.length<5)paragraphs.push('Leitura parcial: '+(5-entries.length)+' eixo(s) ainda não possui(em) respostas. Ausência de registro não significa resultado zero.');
+ else if(entries.some(x=>x.ids.length<4))paragraphs.push('A interpretação considera apenas as questões já respondidas; os percentuais poderão mudar com novos registros.');
+ return paragraphs;
+}
+function renderReflection(){const target=$('reflectionText');if(target){target.replaceChildren(...reflectionData().map(t=>{const p=document.createElement('p');p.textContent=t;return p}))}}
+function radar(){
+ const c=$('radar'),x=c.getContext('2d'),cx=300,cy=265,R=183,v=scores();
+ x.clearRect(0,0,600,560);x.fillStyle='#102640';x.fillRect(0,0,600,560);
+ const pt=(i,r)=>{const a=-Math.PI/2+i*2*Math.PI/5;return[cx+r*Math.cos(a),cy+r*Math.sin(a)]};
+ for(let level=1;level<=4;level++){x.beginPath();for(let i=0;i<5;i++){const p=pt(i,R*level/4);i?x.lineTo(...p):x.moveTo(...p)}x.closePath();x.strokeStyle='#4c6680';x.lineWidth=1.3;x.stroke()}
+ for(let i=0;i<5;i++){let p=pt(i,R);x.beginPath();x.moveTo(cx,cy);x.lineTo(...p);x.strokeStyle='#4c6680';x.stroke()}
+ x.beginPath();v.forEach((val,i)=>{const p=pt(i,R*(val??0)/100);i?x.lineTo(...p):x.moveTo(...p)});x.closePath();x.fillStyle='rgba(34,211,238,.26)';x.fill();x.strokeStyle='#53e2f3';x.lineWidth=4;x.stroke();
+ v.forEach((val,i)=>{if(val===null)return;const p=pt(i,R*val/100);x.beginPath();x.arc(...p,6.5,0,Math.PI*2);x.fillStyle=colors[i];x.fill();x.lineWidth=2;x.strokeStyle='#f3f9ff';x.stroke()});
+ // Posições fixas para os rótulos: mantêm os textos fora do pentágono e dentro do canvas.
+ // A etiqueta do lazer tem duas linhas, alinhadas à direita e afastadas do vértice esquerdo.
+ const captions=[
+  {lines:['Protagonismo'],x:300,y:33,align:'center'},
+  {lines:['Tecnologia'],x:491,y:178,align:'left'},
+  {lines:['ENEM'],x:434,y:443,align:'center'},
+  {lines:['Carreira'],x:166,y:443,align:'center'},
+  {lines:['Lazer','e tempo livre'],x:110,y:165,align:'right'}
+ ];
+ captions.forEach((label,i)=>{
+  x.textAlign=label.align;x.textBaseline='alphabetic';x.fillStyle='#f0f6ff';
+  x.font='bold 16px system-ui, Arial, sans-serif';
+  label.lines.forEach((line,j)=>x.fillText(line,label.x,label.y+j*21));
+  x.font='bold 15px system-ui, Arial, sans-serif';x.fillStyle='#68e4f2';
+  x.fillText(v[i]===null?'—':v[i]+'%',label.x,label.y+label.lines.length*21+5);
+ });
+ x.fillStyle='#d5e4f3';x.font='14px system-ui';x.textAlign='left';x.fillText('Escala: 0% (centro) a 100% (vértices)',14,543);
+ $('metrics').innerHTML=groups.map((g,i)=>{const done=questions.filter((q,j)=>q.g===i&&state.counts[j]!==undefined).length;return '<div class="metric-row"><div class="metric-title"><strong>'+g+'</strong><span class="metric-value" style="color:'+colors[i]+'">'+(v[i]===null?'—':v[i]+'%')+'</span></div><small>'+(v[i]===null?'Sem respostas registradas':done+' de 4 questões respondidas · percentual de SIM')+'</small><div class="metric-track"><div class="metric-fill" style="width:'+(v[i]??0)+'%;background:'+colors[i]+'"></div></div></div>'}).join('');renderReflection();
+}
+function summary(){const v=scores();return 'RODA DAS COMPETÊNCIAS — RELATÓRIO FORMATIVO\nTurma: '+(state.className||'Não informada')+'\nEstudantes: '+state.total+'\nQuestões realizadas: '+state.used.length+'/20\n\n'+groups.map((g,i)=>g+': '+(v[i]??'Sem dados')+(v[i]===null?'':'%')).join('\n')+'\n\nLEITURA REFLEXIVA\n'+reflectionData().join('\n\n')+'\n\n'+state.used.map(i=>'QUESTÃO '+(i+1)+' — '+questions[i].q+'\nSIM: '+(state.counts[i]??'Não informado')+' | NÃO: '+(state.counts[i]===undefined?'Não informado':state.total-state.counts[i])+'\nMEDIAÇÃO: '+questions[i].m+'\nENCAMINHAMENTO: '+questions[i].a+'\nCOMENTÁRIOS: '+(state.notes[i]||'Não registradas')).join('\n\n')}
+$('copy').onclick=async()=>{try{await navigator.clipboard.writeText(summary());$('status').textContent='Resumo copiado.'}catch(e){$('status').textContent='Não foi possível copiar automaticamente.'}};
+// Exportação DOCX nativa, sem dependências externas e sem conexão à internet.
+const enc=new TextEncoder();
+const xmlEscape=t=>String(t??'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;').replace(/'/g,'&apos;');
+function crc32(bytes){let crc=0xffffffff;for(const b of bytes){crc^=b;for(let i=0;i<8;i++)crc=(crc>>>1)^((crc&1)?0xedb88320:0)}return (crc^0xffffffff)>>>0}
+function zipDocx(files){const chunks=[],central=[];let pos=0;const u16=n=>[n&255,(n>>>8)&255],u32=n=>[n&255,(n>>>8)&255,(n>>>16)&255,(n>>>24)&255];const add=a=>{chunks.push(a);pos+=a.length};
+ for(const [name,bytes] of files){const nb=enc.encode(name),crc=crc32(bytes),off=pos;add(Uint8Array.from([...u32(0x04034b50),...u16(20),...u16(0),...u16(0),...u16(0),...u16(0),...u32(crc),...u32(bytes.length),...u32(bytes.length),...u16(nb.length),...u16(0)]));add(nb);add(bytes);
+ central.push(Uint8Array.from([...u32(0x02014b50),...u16(20),...u16(20),...u16(0),...u16(0),...u16(0),...u16(0),...u32(crc),...u32(bytes.length),...u32(bytes.length),...u16(nb.length),...u16(0),...u16(0),...u16(0),...u16(0),...u32(0),...u32(off)]),nb)}
+ const centralStart=pos;for(const c of central)add(c);const centralLen=pos-centralStart;add(Uint8Array.from([...u32(0x06054b50),...u16(0),...u16(0),...u16(files.length),...u16(files.length),...u32(centralLen),...u32(centralStart),...u16(0)]));return new Blob(chunks,{type:'application/vnd.openxmlformats-officedocument.wordprocessingml.document'})}
+function makeDocx(){
+ const v=scores(),paragraphs=[];
+ const P=(text,heading=false)=>{paragraphs.push('<w:p><w:pPr>'+(heading?'<w:pStyle w:val="Heading2"/>':'')+'<w:spacing w:after="160"/></w:pPr><w:r><w:t xml:space="preserve">'+xmlEscape(text)+'</w:t></w:r></w:p>')};
+ P('RODA DAS COMPETÊNCIAS — LGPD',true);P('Laboratório de Educação Digital — Cibersegurança • Proteção de Dados • Cidadania Digital');P('Modalidade: '+(state.mode==='individual'?'Individual':'Coletiva'));P('Turma: '+(state.className||'Não informada'));P('Participantes: '+state.total);P('Questões sorteadas: '+state.used.length+' de 20');
+ P('PENTÁGONO DAS COMPETÊNCIAS',true);
+ // O gráfico é incluído como PNG dentro do arquivo DOCX.
+ paragraphs.push('<w:p><w:r><w:drawing><wp:inline xmlns:wp="http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing"><wp:extent cx="5486400" cy="5120640"/><wp:docPr id="1" name="Pentágono de resultados"/><a:graphic xmlns:a="http://schemas.openxmlformats.org/drawingml/2006/main"><a:graphicData uri="http://schemas.openxmlformats.org/drawingml/2006/picture"><pic:pic xmlns:pic="http://schemas.openxmlformats.org/drawingml/2006/picture"><pic:nvPicPr><pic:cNvPr id="0" name="Pentagono.png"/><pic:cNvPicPr/></pic:nvPicPr><pic:blipFill><a:blip r:embed="rId2" xmlns:r="http://schemas.openxmlformats.org/officeDocument/2006/relationships"/><a:stretch><a:fillRect/></a:stretch></pic:blipFill><pic:spPr><a:xfrm><a:off x="0" y="0"/><a:ext cx="5486400" cy="5120640"/></a:xfrm><a:prstGeom prst="rect"><a:avLst/></a:prstGeom></pic:spPr></pic:pic></a:graphicData></a:graphic></wp:inline></w:drawing></w:r></w:p>');
+ P('Percentuais de respostas alinhadas às boas práticas nas questões efetivamente registradas.');groups.forEach((g,i)=>P(g+': '+(v[i]===null?'Sem registros':v[i]+'%')));
+ P('LEITURA REFLEXIVA',true);reflectionData().forEach(t=>P(t));P('REGISTROS POR QUESTÃO',true);
+ state.used.forEach(i=>{const q=questions[i];P((i+1)+'. '+groups[q.g],true);P(q.q);P('SIM: '+(state.counts[i]??'Não registrado')+' | NÃO: '+(state.counts[i]===undefined?'Não registrado':state.total-state.counts[i]));P('Ponte — Mediação: '+q.m);P('Ponte — Encaminhamento: '+q.a);P('Comentários: '+(state.notes[i]||'Não registrados'))});
+ P('INTERVENÇÕES PEDAGÓGICAS',true);if(typeof getInterventions==='function'){getInterventions().forEach((r,g)=>{P(groups[g],true);P('Situação: '+r.status+' | Data: '+(r.date||'Não informada'));P('Plano: '+(r.plan||'Não registrado'));P('Evidências: '+(r.evidence||'Não registradas'));P('Reavaliação: '+(r.reeval||'Não registrada'))})}P('Este material é formativo e não classifica estudantes. Evite dados pessoais sensíveis.');
+ const documentXml='<?xml version="1.0" encoding="UTF-8" standalone="yes"?><w:document xmlns:w="http://schemas.openxmlformats.org/wordprocessingml/2006/main" xmlns:r="http://schemas.openxmlformats.org/officeDocument/2006/relationships" xmlns:wp="http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing"><w:body>'+paragraphs.join('')+'<w:sectPr><w:pgSz w:w="11906" w:h="16838"/><w:pgMar w:top="1100" w:right="1000" w:bottom="1100" w:left="1000"/></w:sectPr></w:body></w:document>';
+ const contentTypes='<?xml version="1.0" encoding="UTF-8"?><Types xmlns="http://schemas.openxmlformats.org/package/2006/content-types"><Default Extension="rels" ContentType="application/vnd.openxmlformats-package.relationships+xml"/><Default Extension="xml" ContentType="application/xml"/><Default Extension="png" ContentType="image/png"/><Override PartName="/word/document.xml" ContentType="application/vnd.openxmlformats-officedocument.wordprocessingml.document.main+xml"/><Override PartName="/word/styles.xml" ContentType="application/vnd.openxmlformats-officedocument.wordprocessingml.styles+xml"/></Types>';
+ const rels='<?xml version="1.0" encoding="UTF-8"?><Relationships xmlns="http://schemas.openxmlformats.org/package/2006/relationships"><Relationship Id="rId1" Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/officeDocument" Target="word/document.xml"/></Relationships>';
+ const docrels='<?xml version="1.0" encoding="UTF-8"?><Relationships xmlns="http://schemas.openxmlformats.org/package/2006/relationships"><Relationship Id="rId1" Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/styles" Target="styles.xml"/><Relationship Id="rId2" Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/image" Target="media/pentagono.png"/></Relationships>';
+ const styles='<?xml version="1.0" encoding="UTF-8"?><w:styles xmlns:w="http://schemas.openxmlformats.org/wordprocessingml/2006/main"><w:style w:type="paragraph" w:styleId="Heading2"><w:name w:val="heading 2"/><w:rPr><w:b/><w:color w:val="1768C7"/><w:sz w:val="30"/></w:rPr></w:style></w:styles>';
+ const png=$('radar').toDataURL('image/png').split(',')[1],binary=atob(png),img=Uint8Array.from(binary,c=>c.charCodeAt(0));
+ return zipDocx([['[Content_Types].xml',enc.encode(contentTypes)],['_rels/.rels',enc.encode(rels)],['word/document.xml',enc.encode(documentXml)],['word/styles.xml',enc.encode(styles)],['word/_rels/document.xml.rels',enc.encode(docrels)],['word/media/pentagono.png',img]]);
+}
+$('export').onclick=()=>{try{saveState();radar();const blob=makeDocx(),url=URL.createObjectURL(blob),a=document.createElement('a');a.href=url;a.download='Roda_das_Competencias_Sec_XXI_Relatorio.docx';document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(url),30000);$('status').textContent='Relatório DOCX gerado e disponibilizado para download.'}catch(e){$('status').textContent='Não foi possível gerar o DOCX: '+e.message;console.error(e)}};
+$('reportBack').onclick=()=>tab('roda');$('reportReset').onclick=()=>$('resetHome').click();$('resetHome').onclick=()=>{if(!confirm('Reiniciar a roda? A experiência atual será arquivada no histórico da turma, se houver uma turma selecionada.'))return;if(typeof archiveCurrentExperience==='function')archiveCurrentExperience(true);state={used:[],active:-1,counts:{},notes:{},className:state.className,total:state.total,mode:state.mode};lastGroup=-1;angle=0;wheel(0);$('spinMessage').textContent='';saveState();update();tab('roda')};$('changeExperience').onclick=()=>{const hasRecords=state.used.length>0||Object.keys(state.counts).length>0||Object.values(state.notes).some(v=>String(v||'').trim());if(hasRecords&&!confirm('Finalizar esta experiência? Os registros serão arquivados automaticamente se uma turma estiver selecionada. Caso contrário, exporte uma cópia JSON antes de sair.'))return;if(typeof archiveCurrentExperience==='function')archiveCurrentExperience(true);state={used:[],active:-1,counts:{},notes:{},className:'',total:10,mode:null};lastGroup=-1;angle=0;wheel(0);$('spinMessage').textContent='';$('className').value='';$('total').value='10';$('welcome').classList.remove('hidden');$('appMain').classList.add('hidden');syncModeNavigation();try{localStorage.removeItem('rodaLGPDPremiumV10')}catch(e){};update();window.scrollTo(0,0)};$('className').value=state.className;$('total').value=state.total;$('totalSummary').textContent=state.total;wheel();syncModeNavigation();update();
+
+// v19: manter o layout sincronizado com o modo de tela cheia.
+document.addEventListener('fullscreenchange',()=>{
+  document.documentElement.classList.toggle('fullscreen-active',Boolean(document.fullscreenElement));
+  const btn=document.getElementById('fullScreen');
+  if(btn)btn.textContent=document.fullscreenElement?'⛶ SAIR DA TELA CHEIA':'⛶ TELA CHEIA';
+  window.dispatchEvent(new Event('resize'));
+});
