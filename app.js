@@ -33,6 +33,17 @@ $('fullScreen').onclick=async()=>{try{if(!document.fullscreenElement)await docum
 function selectAnswer(n){$('count').value=String(n);$('answerYes').classList.toggle('selected',n===1);$('answerNo').classList.toggle('selected',n===0);saveCurrent()}
 $('answerYes').onclick=()=>selectAnswer(1);$('answerNo').onclick=()=>selectAnswer(0);
 function tab(name){if(name==='turmas'&&state.mode!=='collective')name='roda';document.querySelectorAll('main>section[id]').forEach(s=>{if(['roda','pergunta','questoes','relatorio','intervencao','turmas'].includes(s.id))s.classList.toggle('hidden',s.id!==name)});document.querySelectorAll('nav button').forEach(b=>b.classList.toggle('on',b.dataset.tab===name));if(name==='relatorio')radar();if(name==='questoes')list();if(name==='intervencao'&&typeof renderIntervention==='function')renderIntervention();if(name==='turmas'&&typeof renderClasses==='function')renderClasses()};document.querySelectorAll('nav button').forEach(b=>b.onclick=()=>tab(b.dataset.tab));
+// Os rótulos de todas as visualizações são obtidos dos eixos oficiais de LGPD.
+// Quebra em até duas linhas para manter o nome completo e a legibilidade.
+function axisLines(name, maxChars=13){
+ const words=name.split(/\s+/), lines=[''];
+ for(const word of words){
+  const current=lines[lines.length-1];
+  if(current && (current.length+1+word.length>maxChars))lines.push(word);
+  else lines[lines.length-1]=current?current+' '+word:word;
+ }
+ return lines;
+}
 // Setores giram, mas seus rótulos permanecem sempre legíveis; miolo é fixo.
 function wheel(rotation=angle){
  const c=$('wheel'),x=c.getContext('2d'),cx=250,cy=250,r=214;
@@ -43,7 +54,7 @@ function wheel(rotation=angle){
   x.beginPath();x.moveTo(cx,cy);x.arc(cx,cy,r,a,b);x.closePath();
   x.fillStyle=colors[i];x.fill();x.strokeStyle='#071525';x.lineWidth=5;x.stroke();
   // Letras verticais, nunca invertidas, inclusive no eixo sorteado.
-  const labels=[['PROTAGONISMO'],['TECNOLOGIA'],['ENEM'],['CARREIRA'],['LAZER E','TEMPO LIVRE']][i];
+  const labels=axisLines(groups[i].toLocaleUpperCase('pt-BR'),13);
   const tx=cx+145*Math.cos(mid),ty=cy+145*Math.sin(mid);
   x.save();x.translate(tx,ty);x.textAlign='center';x.textBaseline='middle';
   x.fillStyle='#fff';x.font='bold 16px system-ui';
@@ -78,7 +89,7 @@ function saveCurrent(){
  const raw=$('count').value.trim();
  if(raw!==''){
   const n=Number(raw);
-  if(!Number.isInteger(n)||n<0||n>state.total){alert('Informe um número inteiro de respostas alinhadas às boas práticas entre 0 e '+state.total+'.');$('count').focus();return false}
+  if(!Number.isInteger(n)||n<0||n>state.total){alert('Informe um número inteiro de respostas SIM entre 0 e '+state.total+'.');$('count').focus();return false}
   state.counts[state.active]=n;
  }else{delete state.counts[state.active]}
  state.notes[state.active]=$('note').value;saveState();return true;
@@ -93,7 +104,7 @@ $('className').onchange=saveState;
 $('total').onchange=()=>{
  const n=Number($('total').value);
  if(!Number.isInteger(n)||n<1){alert('Informe uma quantidade válida de participantes.');$('total').value=state.total;return}
- if(Object.values(state.counts).some(v=>v>n)){if(!confirm('Algumas questões possuem mais respostas alinhadas às boas práticas do que o novo total. Esses registros serão removidos. Continuar?')){$('total').value=state.total;return}Object.keys(state.counts).forEach(k=>{if(state.counts[k]>n)delete state.counts[k]})}
+ if(Object.values(state.counts).some(v=>v>n)){if(!confirm('Algumas questões possuem mais respostas SIM do que o novo total. Esses registros serão removidos. Continuar?')){$('total').value=state.total;return}Object.keys(state.counts).forEach(k=>{if(state.counts[k]>n)delete state.counts[k]})}
  saveState();$('totalSummary').textContent=state.total;radar();
 };
 function list(){
@@ -119,7 +130,7 @@ function resetBridges(){hideBridge('med','showMed');hideBridge('action','showAct
 function toggleBridge(id,buttonId){const el=$(id),btn=$(buttonId);if(!el||!btn)return;const willOpen=el.hidden;el.hidden=!willOpen;btn.textContent=willOpen?'OCULTAR':'VER';btn.setAttribute('aria-expanded',String(willOpen));}
 $('showMed').addEventListener('click',()=>toggleBridge('med','showMed'));
 $('showAction').addEventListener('click',()=>toggleBridge('action','showAction'));
-function update(){if(state.active!==lastBridgeQuestion){resetBridges();lastBridgeQuestion=state.active;}const completed=Object.keys(state.counts).filter(k=>state.counts[k]!==null&&state.counts[k]!==undefined).length;const yesTotal=Object.values(state.counts).reduce((sum,n)=>sum+(Number(n)||0),0);$('counterTop').textContent=state.used.length+' de 20 questões sorteadas';$('answersTop').textContent=completed+' respostas registradas';$('scoreTop').textContent=yesTotal+' respostas alinhadas às boas práticas · '+state.total+' '+(state.total===1?'participante':'participantes');$('progress').style.width=(state.used.length*5)+'%';$('spin').disabled=state.used.length===20||isSpinning||state.active>=0;$('last').disabled=state.active<0;$('totalSummary').textContent=state.total;if(state.active>=0){const i=state.active,q=questions[i];$('qhead').textContent='QUESTÃO '+(i+1)+' • '+groups[q.g];$('qtext').textContent=q.q;$('med').textContent=q.m;$('action').textContent=q.a;$('count').value=state.counts[i]??'';$('answerYes').classList.toggle('selected',state.counts[i]===1);$('answerNo').classList.toggle('selected',state.counts[i]===0);$('note').value=state.notes[i]||'';$('qcontrols').classList.remove('hidden')}else{$('qhead').textContent='';$('qtext').textContent='Gire a roda para começar.';$('qcontrols').classList.add('hidden')}}
+function update(){if(state.active!==lastBridgeQuestion){resetBridges();lastBridgeQuestion=state.active;}const completed=Object.keys(state.counts).filter(k=>state.counts[k]!==null&&state.counts[k]!==undefined).length;const goodTotal=Object.keys(state.counts).reduce((sum,i)=>sum+(goodCount(Number(i))||0),0);$('counterTop').textContent=state.used.length+' de 20 questões sorteadas';$('answersTop').textContent=completed+' respostas registradas';$('scoreTop').textContent=goodTotal+' respostas protetivas registradas · '+state.total+' '+(state.total===1?'participante':'participantes');$('progress').style.width=(state.used.length*5)+'%';$('spin').disabled=state.used.length===20||isSpinning||state.active>=0;$('last').disabled=state.active<0;$('totalSummary').textContent=state.total;if(state.active>=0){const i=state.active,q=questions[i];$('qhead').textContent='QUESTÃO '+(i+1)+' • '+groups[q.g];$('qtext').textContent=q.q;$('med').textContent=q.m;$('action').textContent=q.a;$('count').value=state.counts[i]??'';$('answerYes').classList.toggle('selected',state.counts[i]===1);$('answerNo').classList.toggle('selected',state.counts[i]===0);$('note').value=state.notes[i]||'';$('qcontrols').classList.remove('hidden')}else{$('qhead').textContent='';$('qtext').textContent='Gire a roda para começar.';$('qcontrols').classList.add('hidden')}}
 function goodCount(i){if(state.counts[i]===undefined)return null;return questions[i].positive?Number(state.counts[i]):state.total-Number(state.counts[i])}
 function scores(){return groups.map((_,g)=>{let ids=questions.map((q,i)=>q.g===g?i:-1).filter(i=>i>=0&&state.counts[i]!==undefined);return ids.length?Math.round(100*ids.reduce((a,i)=>a+goodCount(i),0)/(ids.length*state.total)):null})}
 function reflectionData(){
@@ -152,28 +163,56 @@ function radar(){
  const c=$('radar'),x=c.getContext('2d'),cx=300,cy=265,R=183,v=scores();
  x.clearRect(0,0,600,560);x.fillStyle='#102640';x.fillRect(0,0,600,560);
  const pt=(i,r)=>{const a=-Math.PI/2+i*2*Math.PI/5;return[cx+r*Math.cos(a),cy+r*Math.sin(a)]};
- for(let level=1;level<=4;level++){x.beginPath();for(let i=0;i<5;i++){const p=pt(i,R*level/4);i?x.lineTo(...p):x.moveTo(...p)}x.closePath();x.strokeStyle='#4c6680';x.lineWidth=1.3;x.stroke()}
- for(let i=0;i<5;i++){let p=pt(i,R);x.beginPath();x.moveTo(cx,cy);x.lineTo(...p);x.strokeStyle='#4c6680';x.stroke()}
- x.beginPath();v.forEach((val,i)=>{const p=pt(i,R*(val??0)/100);i?x.lineTo(...p):x.moveTo(...p)});x.closePath();x.fillStyle='rgba(34,211,238,.26)';x.fill();x.strokeStyle='#53e2f3';x.lineWidth=4;x.stroke();
- v.forEach((val,i)=>{if(val===null)return;const p=pt(i,R*val/100);x.beginPath();x.arc(...p,6.5,0,Math.PI*2);x.fillStyle=colors[i];x.fill();x.lineWidth=2;x.strokeStyle='#f3f9ff';x.stroke()});
- // Posições fixas para os rótulos: mantêm os textos fora do pentágono e dentro do canvas.
- // A etiqueta do lazer tem duas linhas, alinhadas à direita e afastadas do vértice esquerdo.
+ // Cinco eixos mantêm exatamente a mesma ordem de groups, questions e dos indicadores.
+ for(let level=1;level<=4;level++){
+  x.beginPath();for(let i=0;i<groups.length;i++){const p=pt(i,R*level/4);i?x.lineTo(...p):x.moveTo(...p)}
+  x.closePath();x.strokeStyle='#4c6680';x.lineWidth=1.3;x.stroke();
+ }
+ for(let i=0;i<groups.length;i++){
+  const p=pt(i,R);x.beginPath();x.moveTo(cx,cy);x.lineTo(...p);x.strokeStyle='#4c6680';x.stroke();
+ }
+ // Sem registros, não se desenha polígono zero. Dados ausentes não significam 0%.
+ const complete=v.every(val=>val!==null);
+ if(complete){
+  x.beginPath();v.forEach((val,i)=>{const p=pt(i,R*val/100);i?x.lineTo(...p):x.moveTo(...p)});
+  x.closePath();x.fillStyle='rgba(34,211,238,.26)';x.fill();x.strokeStyle='#53e2f3';x.lineWidth=4;x.stroke();
+ }else{
+  // Parcial: só ligar resultados vizinhos observados; não sugerir zero nos eixos faltantes.
+  x.strokeStyle='#53e2f3';x.lineWidth=4;
+  for(let i=0;i<groups.length;i++){
+   const j=(i+1)%groups.length;
+   if(v[i]===null||v[j]===null)continue;
+   x.beginPath();x.moveTo(...pt(i,R*v[i]/100));x.lineTo(...pt(j,R*v[j]/100));x.stroke();
+  }
+ }
+ v.forEach((val,i)=>{
+  if(val===null)return;
+  const p=pt(i,R*val/100);x.beginPath();x.arc(...p,6.5,0,Math.PI*2);
+  x.fillStyle=colors[i];x.fill();x.lineWidth=2;x.strokeStyle='#f3f9ff';x.stroke();
+ });
+ // Legendas posicionadas junto a cada vértice. Os nomes vêm de groups e não de títulos antigos.
  const captions=[
-  {lines:['Protagonismo'],x:300,y:33,align:'center'},
-  {lines:['Tecnologia'],x:491,y:178,align:'left'},
-  {lines:['ENEM'],x:434,y:443,align:'center'},
-  {lines:['Carreira'],x:166,y:443,align:'center'},
-  {lines:['Lazer','e tempo livre'],x:110,y:165,align:'right'}
+  {x:300,y:27,align:'center'}, // 0: alto
+  {x:475,y:170,align:'left'},  // 1: superior direito
+  {x:424,y:445,align:'left'},  // 2: inferior direito
+  {x:176,y:445,align:'right'}, // 3: inferior esquerdo
+  {x:113,y:170,align:'right'}  // 4: superior esquerdo
  ];
  captions.forEach((label,i)=>{
+  const lines=axisLines(groups[i],13);
   x.textAlign=label.align;x.textBaseline='alphabetic';x.fillStyle='#f0f6ff';
   x.font='bold 16px system-ui, Arial, sans-serif';
-  label.lines.forEach((line,j)=>x.fillText(line,label.x,label.y+j*21));
+  lines.forEach((line,j)=>x.fillText(line,label.x,label.y+j*21));
   x.font='bold 15px system-ui, Arial, sans-serif';x.fillStyle='#68e4f2';
-  x.fillText(v[i]===null?'—':v[i]+'%',label.x,label.y+label.lines.length*21+5);
+  x.fillText(v[i]===null?'—':v[i]+'%',label.x,label.y+lines.length*21+5);
  });
- x.fillStyle='#d5e4f3';x.font='14px system-ui';x.textAlign='left';x.fillText('Escala: 0% (centro) a 100% (vértices)',14,543);
- $('metrics').innerHTML=groups.map((g,i)=>{const done=questions.filter((q,j)=>q.g===i&&state.counts[j]!==undefined).length;return '<div class="metric-row"><div class="metric-title"><strong>'+g+'</strong><span class="metric-value" style="color:'+colors[i]+'">'+(v[i]===null?'—':v[i]+'%')+'</span></div><small>'+(v[i]===null?'Sem respostas registradas':done+' de 4 questões respondidas · percentual de SIM')+'</small><div class="metric-track"><div class="metric-fill" style="width:'+(v[i]??0)+'%;background:'+colors[i]+'"></div></div></div>'}).join('');renderReflection();
+ x.fillStyle='#d5e4f3';x.font='14px system-ui';x.textAlign='left';
+ x.fillText('Escala: 0% (centro) a 100% (vértices)',14,543);
+ $('metrics').innerHTML=groups.map((g,i)=>{
+  const done=questions.filter((q,j)=>q.g===i&&state.counts[j]!==undefined).length;
+  return '<div class="metric-row"><div class="metric-title"><strong>'+g+'</strong><span class="metric-value" style="color:'+colors[i]+'">'+(v[i]===null?'—':v[i]+'%')+'</span></div><small>'+(v[i]===null?'Sem respostas registradas':done+' de 4 questões respondidas · percentual de respostas protetivas')+'</small><div class="metric-track"><div class="metric-fill" style="width:'+(v[i]??0)+'%;background:'+colors[i]+'"></div></div></div>';
+ }).join('');
+ renderReflection();
 }
 function summary(){const v=scores();return 'RODA DAS COMPETÊNCIAS — RELATÓRIO FORMATIVO\nTurma: '+(state.className||'Não informada')+'\nEstudantes: '+state.total+'\nQuestões realizadas: '+state.used.length+'/20\n\n'+groups.map((g,i)=>g+': '+(v[i]??'Sem dados')+(v[i]===null?'':'%')).join('\n')+'\n\nLEITURA REFLEXIVA\n'+reflectionData().join('\n\n')+'\n\n'+state.used.map(i=>'QUESTÃO '+(i+1)+' — '+questions[i].q+'\nSIM: '+(state.counts[i]??'Não informado')+' | NÃO: '+(state.counts[i]===undefined?'Não informado':state.total-state.counts[i])+'\nMEDIAÇÃO: '+questions[i].m+'\nENCAMINHAMENTO: '+questions[i].a+'\nCOMENTÁRIOS: '+(state.notes[i]||'Não registradas')).join('\n\n')}
 $('copy').onclick=async()=>{try{await navigator.clipboard.writeText(summary());$('status').textContent='Resumo copiado.'}catch(e){$('status').textContent='Não foi possível copiar automaticamente.'}};
@@ -204,7 +243,7 @@ function makeDocx(){
  const png=$('radar').toDataURL('image/png').split(',')[1],binary=atob(png),img=Uint8Array.from(binary,c=>c.charCodeAt(0));
  return zipDocx([['[Content_Types].xml',enc.encode(contentTypes)],['_rels/.rels',enc.encode(rels)],['word/document.xml',enc.encode(documentXml)],['word/styles.xml',enc.encode(styles)],['word/_rels/document.xml.rels',enc.encode(docrels)],['word/media/pentagono.png',img]]);
 }
-$('export').onclick=()=>{try{saveState();radar();const blob=makeDocx(),url=URL.createObjectURL(blob),a=document.createElement('a');a.href=url;a.download='Roda_das_Competencias_Sec_XXI_Relatorio.docx';document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(url),30000);$('status').textContent='Relatório DOCX gerado e disponibilizado para download.'}catch(e){$('status').textContent='Não foi possível gerar o DOCX: '+e.message;console.error(e)}};
+$('export').onclick=()=>{try{saveState();radar();const blob=makeDocx(),url=URL.createObjectURL(blob),a=document.createElement('a');a.href=url;a.download='Roda_das_Competencias_LGPD_Relatorio.docx';document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(url),30000);$('status').textContent='Relatório DOCX gerado e disponibilizado para download.'}catch(e){$('status').textContent='Não foi possível gerar o DOCX: '+e.message;console.error(e)}};
 $('reportBack').onclick=()=>tab('roda');$('reportReset').onclick=()=>$('resetHome').click();$('resetHome').onclick=()=>{if(!confirm('Reiniciar a roda? A experiência atual será arquivada no histórico da turma, se houver uma turma selecionada.'))return;if(typeof archiveCurrentExperience==='function')archiveCurrentExperience(true);state={used:[],active:-1,counts:{},notes:{},className:state.className,total:state.total,mode:state.mode};lastGroup=-1;angle=0;wheel(0);$('spinMessage').textContent='';saveState();update();tab('roda')};$('changeExperience').onclick=()=>{const hasRecords=state.used.length>0||Object.keys(state.counts).length>0||Object.values(state.notes).some(v=>String(v||'').trim());if(hasRecords&&!confirm('Finalizar esta experiência? Os registros serão arquivados automaticamente se uma turma estiver selecionada. Caso contrário, exporte uma cópia JSON antes de sair.'))return;if(typeof archiveCurrentExperience==='function')archiveCurrentExperience(true);state={used:[],active:-1,counts:{},notes:{},className:'',total:10,mode:null};lastGroup=-1;angle=0;wheel(0);$('spinMessage').textContent='';$('className').value='';$('total').value='10';$('welcome').classList.remove('hidden');$('appMain').classList.add('hidden');syncModeNavigation();try{localStorage.removeItem('rodaLGPDPremiumV10')}catch(e){};update();window.scrollTo(0,0)};$('className').value=state.className;$('total').value=state.total;$('totalSummary').textContent=state.total;wheel();syncModeNavigation();update();
 
 // v19: manter o layout sincronizado com o modo de tela cheia.
