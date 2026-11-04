@@ -1,23 +1,19 @@
-RODA DAS COMPETÊNCIAS — LGPD | Design da V47 do Projeto XXI
-===========================================================
-Abra index.html no navegador. Todos os arquivos devem ficar na raiz do repositório GitHub.
+RODA DAS COMPETÊNCIAS — LGPD | V48
+Atualização visual/funcional da LGPD V47 com a última atualização do Projeto XXI V48.
 
-IMAGENS DE FUNDO
-- PAINEL.jpg: somente o painel inicial das experiências individual e coletiva.
-- LGPD.jpg: somente a janela que apresenta uma pergunta da roda.
-- Demais janelas: fundo azul-marinho, sem imagens.
+ATUALIZAÇÕES INCORPORADAS
+- Novo botão permanente amarelo "PAINEL DE CONTROLE" no cabeçalho.
+- Retorna ao painel da modalidade atual, a partir da roda, da pergunta, das questões, do pentágono, das análises e da gestão de turmas, sem reiniciar a experiência.
+- Identificação "PAINEL DE CONTROLE" na tela principal.
+- Estilos e comportamento responsivo do Projeto XXI V48 preservados.
 
-PROTEÇÃO DO CONTEÚDO
-As 20 perguntas, cinco eixos, textos de mediação e encaminhamento e as intervenções
-foram preservados da LGPD V11. Os percentuais do pentágono observam a resposta
-protetiva de cada questão (SIM ou NÃO, conforme o enunciado).
+CONTEÚDOS LGPD PRESERVADOS
+- 20 perguntas originais, pontes de mediação e encaminhamento, intervenções individuais e coletivas, cinco eixos e regras de respostas protetivas.
+- Gestão de turmas, histórico, backup JSON e exportação de relatórios.
+- PAINEL.jpg no painel e LGPD.jpg na pergunta; outras seções em azul-marinho.
 
-FUNCIONALIDADES DO MODELO V47
-Painel de controle por modalidade, roda, pentágono, questões, análise/intervenção,
-gestão das turmas, alteração de participantes, refazer questões e exclusão de turma.
-
-ATUALIZAÇÃO
-Antes de substituir arquivos, exporte um backup de suas turmas.
-As chaves locais LGPD V10 foram mantidas. Não misture arquivos dos projetos XXI e LGPD.
-Em sites estáticos, faça upload de todos os arquivos da pasta, sem mudar seus nomes.
-Após a atualização use Ctrl+F5 para remover arquivos antigos do cache.
+INSTALAÇÃO
+Coloque todos os arquivos deste ZIP juntos na raiz do repositório GitHub.
+Abra index.html no navegador. O projeto não exige servidor.
+Antes de substituir a versão publicada, exporte o backup JSON da gestão de turmas.
+Dados antigos são locais ao navegador (localStorage), não são enviados para servidores.

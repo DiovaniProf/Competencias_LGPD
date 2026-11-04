@@ -823,3 +823,10 @@ body{background-color:#06172d!important;background-image:none!important}
  #pergunta #qcontrols:not(.hidden){display:block!important;height:auto!important;overflow:visible!important;max-height:none!important}
 }
 
+
+/* V48 — Acesso permanente ao Painel de Controle */
+#appMain .v48-header-actions{display:flex;align-items:flex-start;justify-content:flex-end;gap:10px;flex-wrap:wrap;flex:none}
+#appMain .v48-control-return{background:linear-gradient(115deg,#ffdf62,#f3b92b)!important;color:#17233a!important;border:2px solid #ffe99a!important;box-shadow:0 0 19px rgba(255,198,44,.42),inset 0 1px 0 #fff6!important;border-radius:12px!important;padding:12px 18px!important;font-weight:950!important;letter-spacing:.025em;white-space:nowrap;cursor:pointer;min-height:44px}
+#appMain .v48-control-return:hover,#appMain .v48-control-return:focus-visible{background:linear-gradient(115deg,#fff1a1,#ffd24c)!important;box-shadow:0 0 25px rgba(255,210,61,.68)!important;transform:translateY(-1px)}
+#appMain .v48-dashboard-caption{display:inline-flex;align-items:center;margin:0 0 12px;padding:7px 14px;border:1px solid #3cd9ef;border-radius:9px;background:rgba(0,32,62,.83);font-size:clamp(13px,1vw,18px);font-weight:900;color:#e5faff;letter-spacing:.06em}
+@media(max-width:900px){#appMain .v46-header{padding-left:0!important;flex-wrap:wrap}#appMain .v48-header-actions{width:100%;justify-content:flex-start}#appMain .v48-control-return{font-size:12px!important}}
