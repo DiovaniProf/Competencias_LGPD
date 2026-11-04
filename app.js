@@ -24,7 +24,7 @@ function setMode(mode,reset=false){
  document.querySelector('#roda .intro').textContent=mode==='individual'?'Uma questão por vez, alternando os cinco eixos. Responda SIM ou NÃO, explore a mediação e registre seus comentários para refletir sobre suas competências e possibilidades de desenvolvimento.':'Uma questão por vez, alternando os cinco eixos. Registre quantos estudantes responderam SIM, explore a mediação e registre comentários para promover o diálogo e identificar possibilidades de intervenção interdisciplinar.';
  $('totalCaption').textContent=mode==='individual'?'Participação:':'Participantes:';
  $('totalChangeHint').textContent=mode==='individual'?'Respostas individuais.':'Para alterar, volte à tela da roda.';
- $('total').value=state.total;syncModeNavigation();saveState();update();tab('roda');
+ $('total').value=state.total;syncModeNavigation();saveState();update();tab('dashboard');
 }
 $('backWheel').onclick=()=>{tab('roda')};
 $('chooseIndividual').onclick=()=>setMode('individual',true);
@@ -32,7 +32,7 @@ $('chooseCollective').onclick=()=>setMode('collective',true);
 $('fullScreen').onclick=async()=>{try{if(!document.fullscreenElement)await document.documentElement.requestFullscreen();else await document.exitFullscreen()}catch(e){alert('O navegador não permitiu a tela cheia.')}};
 function selectAnswer(n){$('count').value=String(n);$('answerYes').classList.toggle('selected',n===1);$('answerNo').classList.toggle('selected',n===0);saveCurrent()}
 $('answerYes').onclick=()=>selectAnswer(1);$('answerNo').onclick=()=>selectAnswer(0);
-function tab(name){if(name==='turmas'&&state.mode!=='collective')name='roda';document.querySelectorAll('main>section[id]').forEach(s=>{if(['roda','pergunta','questoes','relatorio','intervencao','turmas'].includes(s.id))s.classList.toggle('hidden',s.id!==name)});document.querySelectorAll('nav button').forEach(b=>b.classList.toggle('on',b.dataset.tab===name));if(name==='relatorio')radar();if(name==='questoes')list();if(name==='intervencao'&&typeof renderIntervention==='function')renderIntervention();if(name==='turmas'&&typeof renderClasses==='function')renderClasses()};document.querySelectorAll('nav button').forEach(b=>b.onclick=()=>tab(b.dataset.tab));
+function tab(name){if(name==='turmas'&&state.mode!=='collective')name='dashboard';if(name==='dashboard'&&typeof renderV47Dashboard==='function')renderV47Dashboard();document.querySelectorAll('main>section[id]').forEach(s=>{if(['dashboard','roda','pergunta','questoes','relatorio','intervencao','turmas'].includes(s.id))s.classList.toggle('hidden',s.id!==name)});document.querySelectorAll('nav button').forEach(b=>b.classList.toggle('on',b.dataset.tab===name));if(name==='relatorio')radar();if(name==='questoes')list();if(name==='intervencao'&&typeof renderIntervention==='function')renderIntervention();if(name==='turmas'&&typeof renderClasses==='function')renderClasses()};document.querySelectorAll('nav button').forEach(b=>b.onclick=()=>tab(b.dataset.tab));
 // Os rótulos de todas as visualizações são obtidos dos eixos oficiais de LGPD.
 // Quebra em até duas linhas para manter o nome completo e a legibilidade.
 function axisLines(name, maxChars=13){
@@ -92,11 +92,11 @@ function saveCurrent(){
   if(!Number.isInteger(n)||n<0||n>state.total){alert('Informe um número inteiro de respostas SIM entre 0 e '+state.total+'.');$('count').focus();return false}
   state.counts[state.active]=n;
  }else{delete state.counts[state.active]}
- state.notes[state.active]=$('note').value;saveState();return true;
+ state.notes[state.active]=$('note').value;saveState();update();return true;
 }
 $('spin').onclick=()=>{if(state.active>=0){alert('Para avançar, utilize SALVAR E SORTEAR PRÓXIMA PERGUNTA na questão atual.');tab('pergunta');return}spin()};
 $('next').onclick=()=>{if(state.active<0)return; if($('count').value.trim()===''){alert('Registre e confirme a resposta SIM ou NÃO antes de continuar.');$('count').focus();return}if(saveCurrent())spin()};
-$('save').onclick=()=>{if(saveCurrent())alert('Registro salvo com sucesso.')};
+$('save').onclick=()=>{if(saveCurrent())tab('roda')};
 $('last').onclick=()=>{if(state.active>=0)tab('pergunta')};
 $('count').onchange=()=>{};
 $('note').onchange=()=>{};
@@ -125,9 +125,9 @@ function list(){
  });
 }
 let lastBridgeQuestion=null;
-function hideBridge(id,buttonId){const el=$(id),btn=$(buttonId);if(!el||!btn)return;el.hidden=true;btn.textContent='VER';btn.setAttribute('aria-expanded','false');}
+function hideBridge(id,buttonId){const el=$(id),btn=$(buttonId);if(!el||!btn)return;el.hidden=true;btn.setAttribute('aria-expanded','false');}
 function resetBridges(){hideBridge('med','showMed');hideBridge('action','showAction');}
-function toggleBridge(id,buttonId){const el=$(id),btn=$(buttonId);if(!el||!btn)return;const willOpen=el.hidden;el.hidden=!willOpen;btn.textContent=willOpen?'OCULTAR':'VER';btn.setAttribute('aria-expanded',String(willOpen));}
+function toggleBridge(id,buttonId){const el=$(id),btn=$(buttonId);if(!el||!btn)return;const willOpen=el.hidden;el.hidden=!willOpen;btn.setAttribute('aria-expanded',String(willOpen));}
 $('showMed').addEventListener('click',()=>toggleBridge('med','showMed'));
 $('showAction').addEventListener('click',()=>toggleBridge('action','showAction'));
 function update(){if(state.active!==lastBridgeQuestion){resetBridges();lastBridgeQuestion=state.active;}const completed=Object.keys(state.counts).filter(k=>state.counts[k]!==null&&state.counts[k]!==undefined).length;const goodTotal=Object.keys(state.counts).reduce((sum,i)=>sum+(goodCount(Number(i))||0),0);$('counterTop').textContent=state.used.length+' de 20 questões sorteadas';$('answersTop').textContent=completed+' respostas registradas';$('scoreTop').textContent=goodTotal+' respostas protetivas registradas · '+state.total+' '+(state.total===1?'participante':'participantes');$('progress').style.width=(state.used.length*5)+'%';$('spin').disabled=state.used.length===20||isSpinning||state.active>=0;$('last').disabled=state.active<0;$('totalSummary').textContent=state.total;if(state.active>=0){const i=state.active,q=questions[i];$('qhead').textContent='QUESTÃO '+(i+1)+' • '+groups[q.g];$('qtext').textContent=q.q;$('med').textContent=q.m;$('action').textContent=q.a;$('count').value=state.counts[i]??'';$('answerYes').classList.toggle('selected',state.counts[i]===1);$('answerNo').classList.toggle('selected',state.counts[i]===0);$('note').value=state.notes[i]||'';$('qcontrols').classList.remove('hidden')}else{$('qhead').textContent='';$('qtext').textContent='Gire a roda para começar.';$('qcontrols').classList.add('hidden')}}

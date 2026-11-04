@@ -1,26 +1,23 @@
-RODA DAS COMPETÊNCIAS — LGPD | V11 (03/11/2026)
+RODA DAS COMPETÊNCIAS — LGPD | Design da V47 do Projeto XXI
+===========================================================
+Abra index.html no navegador. Todos os arquivos devem ficar na raiz do repositório GitHub.
 
-Correção dos cinco eixos no pentágono e na roda:
-1. Senhas e contas
-2. Segurança na escola
-3. Vida pessoal e redes
-4. Primeiro emprego
-5. LGPD e cidadania
+IMAGENS DE FUNDO
+- PAINEL.jpg: somente o painel inicial das experiências individual e coletiva.
+- LGPD.jpg: somente a janela que apresenta uma pergunta da roda.
+- Demais janelas: fundo azul-marinho, sem imagens.
 
-O gráfico usa exatamente a ordem do banco LGPD (20 questões, 4 por eixo),
-com percentuais de respostas protetivas: para cada questão, SIM ou NÃO
-segundo a polaridade já prevista nos arquivos oficiais da versão V10.
-Eixos sem registros aparecem como —, sem serem tratados como 0%.
-A soma de respostas protetivas no topo e as descrições do relatório
-foram alinhadas com esse critério. A roda exibe os mesmos cinco nomes.
-Nomes de arquivos de exportação agora identificam LGPD, sem mudar o
-formato interno de backup nem invalidar arquivos existentes.
+PROTEÇÃO DO CONTEÚDO
+As 20 perguntas, cinco eixos, textos de mediação e encaminhamento e as intervenções
+foram preservados da LGPD V11. Os percentuais do pentágono observam a resposta
+protetiva de cada questão (SIM ou NÃO, conforme o enunciado).
 
-Preservados: 20 perguntas, pontes, modos individual/coletivo, gestão de
- turmas, intervenções, DOCX e JSON, estética, e chaves de armazenamento V10
-para permitir a recuperação dos dados anteriores no mesmo navegador.
+FUNCIONALIDADES DO MODELO V47
+Painel de controle por modalidade, roda, pentágono, questões, análise/intervenção,
+gestão das turmas, alteração de participantes, refazer questões e exclusão de turma.
 
-Abra index.html no navegador. Todos os arquivos devem ficar na mesma pasta.
-Antes de substituir a versão antiga, exporte um backup JSON em MINHAS TURMAS.
-Se publicado no GitHub, substitua os sete arquivos existentes de mesmo nome.
-Os registros continuam locais ao navegador, sem sincronização na nuvem.
+ATUALIZAÇÃO
+Antes de substituir arquivos, exporte um backup de suas turmas.
+As chaves locais LGPD V10 foram mantidas. Não misture arquivos dos projetos XXI e LGPD.
+Em sites estáticos, faça upload de todos os arquivos da pasta, sem mudar seus nomes.
+Após a atualização use Ctrl+F5 para remover arquivos antigos do cache.
