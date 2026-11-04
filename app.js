@@ -16,6 +16,7 @@ function setMode(mode,reset=false){
  if(!['individual','collective'].includes(mode))return;
  if(reset){state={used:[],active:-1,counts:{},notes:{},className:'',total:mode==='individual'?1:10,mode};lastGroup=-1;angle=0;wheel(0);$('className').value='';$('spinMessage').textContent='';}
  state.mode=mode;if(mode==='individual')state.total=1;
+ document.documentElement.dataset.experienceMode=mode;
  $('welcome').classList.add('hidden');$('appMain').classList.remove('hidden');
  $('collectiveTotal').classList.toggle('hidden',mode==='individual');
  $('individualAnswer').classList.toggle('hidden',mode!=='individual');
@@ -24,39 +25,69 @@ function setMode(mode,reset=false){
  document.querySelector('#roda .intro').textContent=mode==='individual'?'Uma questão por vez, alternando os cinco eixos. Responda SIM ou NÃO, explore a mediação e registre seus comentários para refletir sobre suas competências e possibilidades de desenvolvimento.':'Uma questão por vez, alternando os cinco eixos. Registre quantos estudantes responderam SIM, explore a mediação e registre comentários para promover o diálogo e identificar possibilidades de intervenção interdisciplinar.';
  $('totalCaption').textContent=mode==='individual'?'Participação:':'Participantes:';
  $('totalChangeHint').textContent=mode==='individual'?'Respostas individuais.':'Para alterar, volte à tela da roda.';
- $('total').value=state.total;syncModeNavigation();saveState();update();tab('roda');
+ $('total').value=state.total;syncModeNavigation();saveState();update();tab('dashboard');
 }
 $('backWheel').onclick=()=>{tab('roda')};
-$('chooseIndividual').onclick=()=>setMode('individual',true);
-$('chooseCollective').onclick=()=>setMode('collective',true);
+// V73: fullscreen must be requested directly within the trusted click event.
+// Browsers intentionally block fullscreen on automatic page load.
+function enterFullscreenV73(){
+ if(document.fullscreenElement)return;
+ const root=document.documentElement;
+ const request=root.requestFullscreen||root.webkitRequestFullscreen;
+ if(!request){return;}
+ try{const result=request.call(root);if(result&&typeof result.catch==='function')result.catch(()=>{});}catch(e){}
+}
+$('chooseIndividual').onclick=()=>{enterFullscreenV73();setMode('individual',true);};
+$('chooseCollective').onclick=()=>{enterFullscreenV73();setMode('collective',true);};
+$('loginFullscreen').onclick=()=>{
+ if(document.fullscreenElement){const exit=document.exitFullscreen||document.webkitExitFullscreen;if(exit)try{const r=exit.call(document);if(r&&r.catch)r.catch(()=>{});}catch(e){}}
+ else enterFullscreenV73();
+};
 $('fullScreen').onclick=async()=>{try{if(!document.fullscreenElement)await document.documentElement.requestFullscreen();else await document.exitFullscreen()}catch(e){alert('O navegador não permitiu a tela cheia.')}};
-function selectAnswer(n){$('count').value=String(n);$('answerYes').classList.toggle('selected',n===1);$('answerNo').classList.toggle('selected',n===0);saveCurrent()}
+function selectAnswer(n){if(state.mode!=='individual'||state.active<0)return;$('count').value=String(n);if(saveCurrent()){radar(); $('answerYes').setAttribute('aria-pressed',String(n===1));$('answerNo').setAttribute('aria-pressed',String(n===0)); }}
 $('answerYes').onclick=()=>selectAnswer(1);$('answerNo').onclick=()=>selectAnswer(0);
-function tab(name){if(name==='turmas'&&state.mode!=='collective')name='roda';document.querySelectorAll('main>section[id]').forEach(s=>{if(['roda','pergunta','questoes','relatorio','intervencao','turmas'].includes(s.id))s.classList.toggle('hidden',s.id!==name)});document.querySelectorAll('nav button').forEach(b=>b.classList.toggle('on',b.dataset.tab===name));if(name==='relatorio')radar();if(name==='questoes')list();if(name==='intervencao'&&typeof renderIntervention==='function')renderIntervention();if(name==='turmas'&&typeof renderClasses==='function')renderClasses()};document.querySelectorAll('nav button').forEach(b=>b.onclick=()=>tab(b.dataset.tab));
+function tab(name){if(name==='turmas'&&state.mode!=='collective')name='dashboard';if(name==='dashboard'&&typeof renderV47Dashboard==='function')renderV47Dashboard();document.querySelectorAll('main>section[id]').forEach(s=>{if(['dashboard','roda','pergunta','questoes','relatorio','intervencao','turmas'].includes(s.id))s.classList.toggle('hidden',s.id!==name)});document.querySelectorAll('nav button').forEach(b=>b.classList.toggle('on',b.dataset.tab===name));if(name==='relatorio'){
+ radar();
+ requestAnimationFrame(()=>{if(!$('relatorio').classList.contains('hidden'))radar();});
+}if(name==='questoes')list();if(name==='intervencao'&&typeof renderIntervention==='function')renderIntervention();if(name==='turmas'&&typeof renderClasses==='function')renderClasses()};document.querySelectorAll('nav button').forEach(b=>b.onclick=()=>tab(b.dataset.tab));
 // Setores giram, mas seus rótulos permanecem sempre legíveis; miolo é fixo.
+// V64: roda 3D desenhada em canvas, mantendo sorteio e animação originais.
 function wheel(rotation=angle){
- const c=$('wheel'),x=c.getContext('2d'),cx=250,cy=250,r=214;
+ const c=$('wheel'),x=c.getContext('2d'),cx=250,cy=250,r=209;
  const rot=rotation*Math.PI/180;
  x.clearRect(0,0,500,500);
+ // Sombra e aro metálico externo.
+ x.save();x.shadowColor='rgba(0,0,0,.85)';x.shadowBlur=25;x.shadowOffsetY=15;
+ x.beginPath();x.arc(cx,cy,237,0,Math.PI*2);x.fillStyle='#07162b';x.fill();x.restore();
+ let outer=x.createRadialGradient(190,145,70,cx,cy,239);
+ outer.addColorStop(0,'#fff0ad');outer.addColorStop(.67,'#b9781b');outer.addColorStop(.91,'#ffe59b');outer.addColorStop(1,'#674013');
+ x.beginPath();x.arc(cx,cy,235,0,Math.PI*2);x.fillStyle=outer;x.fill();
+ x.beginPath();x.arc(cx,cy,222,0,Math.PI*2);x.fillStyle='#061d36';x.fill();
+ const base=[['#0b4ab7','#2b7cff','#062c7b'],['#00778f','#20e4f5','#00476e'],['#006e53','#1de8a0','#004a3b'],['#5620aa','#b84cf5','#351067'],['#aa6508','#ffc444','#754006']];
  for(let i=0;i<5;i++){
   const a=-Math.PI/2+i*2*Math.PI/5+rot,b=a+2*Math.PI/5,mid=(a+b)/2;
-  x.beginPath();x.moveTo(cx,cy);x.arc(cx,cy,r,a,b);x.closePath();
-  x.fillStyle=colors[i];x.fill();x.strokeStyle='#071525';x.lineWidth=5;x.stroke();
-  // Letras verticais, nunca invertidas, inclusive no eixo sorteado.
-  const labels=[['PROTAGONISMO'],['TECNOLOGIA'],['ENEM'],['CARREIRA'],['LAZER E','TEMPO LIVRE']][i];
-  const tx=cx+145*Math.cos(mid),ty=cy+145*Math.sin(mid);
+  x.save();x.shadowColor='rgba(0,0,0,.75)';x.shadowBlur=9;x.shadowOffsetY=7;
+  x.beginPath();x.moveTo(cx,cy);x.arc(cx,cy,r,a+.012,b-.012);x.closePath();
+  let g=x.createLinearGradient(cx+Math.cos(mid)*35,cy+Math.sin(mid)*35,cx+Math.cos(mid)*r,cy+Math.sin(mid)*r);
+  g.addColorStop(0,base[i][0]);g.addColorStop(.68,base[i][1]);g.addColorStop(1,base[i][2]);
+  x.fillStyle=g;x.fill();x.restore();x.strokeStyle='#05172c';x.lineWidth=5;x.stroke();
+  x.save();x.beginPath();x.arc(cx,cy,r-7,a+.05,b-.05);x.strokeStyle='rgba(255,255,255,.25)';x.lineWidth=3;x.stroke();x.restore();
+  const labels=[['SENHAS E','CONTAS'],['SEGURANÇA','NA ESCOLA'],['VIDA PESSOAL','E REDES'],['PRIMEIRO','EMPREGO'],['LGPD E','CIDADANIA']][i];
+  const tx=cx+147*Math.cos(mid),ty=cy+147*Math.sin(mid);
   x.save();x.translate(tx,ty);x.textAlign='center';x.textBaseline='middle';
-  x.fillStyle='#fff';x.font='bold 16px system-ui';
-  labels.forEach((line,j)=>x.fillText(line,0,(j-(labels.length-1)/2)*21,118));
-  x.restore();
+  x.shadowColor='#00101d';x.shadowBlur=6;x.shadowOffsetY=2;x.fillStyle='#fff';x.font='900 17px system-ui';
+  labels.forEach((line,j)=>x.fillText(line,0,(j-(labels.length-1)/2)*22,128));x.restore();
  }
- // Disco central permanece imóvel, sem encostar nas divisórias.
- x.beginPath();x.arc(cx,cy,86,0,Math.PI*2);x.fillStyle='#112742';x.fill();
- x.strokeStyle='#f5d17d';x.lineWidth=6;x.stroke();
- x.textAlign='center';x.textBaseline='middle';x.font='bold 19px system-ui';
- x.fillStyle='#fff';x.fillText('RODA DAS',cx,cy-15);
- x.fillStyle='#58dce9';x.font='bold 17px system-ui';x.fillText('COMPETÊNCIAS',cx,cy+15);
+ // Medalhão central, fixo e com relevo dourado.
+ x.save();x.shadowColor='rgba(0,0,0,.8)';x.shadowBlur=14;x.shadowOffsetY=5;
+ x.beginPath();x.arc(cx,cy,93,0,Math.PI*2);x.fillStyle='#e7b34e';x.fill();x.restore();
+ let inner=x.createRadialGradient(cx-27,cy-37,8,cx,cy,89);inner.addColorStop(0,'#16466a');inner.addColorStop(1,'#041a30');
+ x.beginPath();x.arc(cx,cy,83,0,Math.PI*2);x.fillStyle=inner;x.fill();x.strokeStyle='#ffdf86';x.lineWidth=3;x.stroke();
+ x.textAlign='center';x.textBaseline='middle';x.font='900 18px system-ui';x.fillStyle='#fff';x.fillText('RODA DAS',cx,cy-23);
+ x.fillStyle='#4ce8ef';x.font='900 17px system-ui';x.fillText('COMPETÊNCIAS',cx,cy+3);
+ x.fillStyle='#ffd77a';x.font='900 17px system-ui';x.fillText('LGPD',cx,cy+29);
 }
+
 let isSpinning=false,angle=0,lastGroup=state.active>=0?questions[state.active].g:-1;
 function select(i){if(isSpinning)return;if(!state.used.includes(i))state.used.push(i);state.active=i;lastGroup=questions[i].g;saveState();update();tab('pergunta')}
 function spin(){if(isSpinning)return;const rest=questions.map((_,i)=>i).filter(i=>!state.used.includes(i));if(!rest.length){alert('As 20 perguntas já foram realizadas.');return}
@@ -78,23 +109,46 @@ function saveCurrent(){
  const raw=$('count').value.trim();
  if(raw!==''){
   const n=Number(raw);
-  if(!Number.isInteger(n)||n<0||n>state.total){alert('Informe um número inteiro de respostas alinhadas às boas práticas entre 0 e '+state.total+'.');$('count').focus();return false}
+  if(!Number.isInteger(n)||n<0||n>state.total){alert('Informe um número inteiro de respostas SIM entre 0 e '+state.total+'.');$('count').focus();return false}
   state.counts[state.active]=n;
- }else{delete state.counts[state.active]}
- state.notes[state.active]=$('note').value;saveState();return true;
+ }else if(state.counts[state.active]===undefined){/* sem resposta ainda */}
+ state.notes[state.active]=$('note').value;
+ saveState();update();
+ // Atualiza também o registro único da turma, que alimenta o painel coletivo.
+ if(state.mode==='collective' && typeof window.archiveCurrentExperience==='function') {
+   window.archiveCurrentExperience(true);
+ }
+ radar();
+ if(typeof window.renderV47Dashboard==='function')window.renderV47Dashboard();
+ return true;
 }
 $('spin').onclick=()=>{if(state.active>=0){alert('Para avançar, utilize SALVAR E SORTEAR PRÓXIMA PERGUNTA na questão atual.');tab('pergunta');return}spin()};
-$('next').onclick=()=>{if(state.active<0)return; if($('count').value.trim()===''){alert('Registre e confirme a resposta SIM ou NÃO antes de continuar.');$('count').focus();return}if(saveCurrent())spin()};
-$('save').onclick=()=>{if(saveCurrent())alert('Registro salvo com sucesso.')};
+$('next').onclick=()=>{if(state.active<0)return; if($('count').value.trim()===''){alert(state.mode==='individual'?'Selecione SIM ou NÃO antes de continuar.':'Informe quantos estudantes responderam SIM antes de continuar.');(state.mode==='individual'?$('answerYes'):$('count')).focus();return}if(saveCurrent())spin()};
+$('save').onclick=()=>{
+ if(state.mode==='collective'&&state.active>=0&&$('count').value.trim()===''){
+  alert('Informe quantos estudantes responderam SIM (inclusive 0) antes de salvar.');
+  $('count').focus();return;
+ }
+ if(saveCurrent())tab('roda');
+};
 $('last').onclick=()=>{if(state.active>=0)tab('pergunta')};
-$('count').onchange=()=>{};
-$('note').onchange=()=>{};
+// Sincroniza respostas com os indicadores e o pentágono sem aguardar nova questão.
+// Durante a digitação, valores incompletos não apagam registros já confirmados.
+$('count').addEventListener('change',()=>{
+ if(state.active<0)return;
+ const raw=$('count').value.trim();
+ if(raw===''){return;} // Apagar temporariamente o campo não elimina um registro salvo.
+ const n=Number(raw);
+ if(Number.isInteger(n)&&n>=0&&n<=state.total)saveCurrent();
+});
+
+$('note').addEventListener('change',()=>{if(state.active>=0)saveCurrent()});
 $('className').onchange=saveState;
 $('total').onchange=()=>{
  const n=Number($('total').value);
  if(!Number.isInteger(n)||n<1){alert('Informe uma quantidade válida de participantes.');$('total').value=state.total;return}
- if(Object.values(state.counts).some(v=>v>n)){if(!confirm('Algumas questões possuem mais respostas alinhadas às boas práticas do que o novo total. Esses registros serão removidos. Continuar?')){$('total').value=state.total;return}Object.keys(state.counts).forEach(k=>{if(state.counts[k]>n)delete state.counts[k]})}
- saveState();$('totalSummary').textContent=state.total;radar();
+ if(Object.values(state.counts).some(v=>v>n)){if(!confirm('Algumas questões possuem mais respostas SIM do que o novo total. Esses registros serão removidos. Continuar?')){$('total').value=state.total;return}Object.keys(state.counts).forEach(k=>{if(state.counts[k]>n)delete state.counts[k]})}
+ saveState();$('totalSummary').textContent=state.total;update();radar();
 };
 function list(){
  const target=$('list');target.replaceChildren();
@@ -114,14 +168,28 @@ function list(){
  });
 }
 let lastBridgeQuestion=null;
-function hideBridge(id,buttonId){const el=$(id),btn=$(buttonId);if(!el||!btn)return;el.hidden=true;btn.textContent='VER';btn.setAttribute('aria-expanded','false');}
+function hideBridge(id,buttonId){const el=$(id),btn=$(buttonId);if(!el||!btn)return;el.hidden=true;btn.setAttribute('aria-expanded','false');}
 function resetBridges(){hideBridge('med','showMed');hideBridge('action','showAction');}
-function toggleBridge(id,buttonId){const el=$(id),btn=$(buttonId);if(!el||!btn)return;const willOpen=el.hidden;el.hidden=!willOpen;btn.textContent=willOpen?'OCULTAR':'VER';btn.setAttribute('aria-expanded',String(willOpen));}
+function toggleBridge(id,buttonId){const el=$(id),btn=$(buttonId);if(!el||!btn)return;const willOpen=el.hidden;el.hidden=!willOpen;btn.setAttribute('aria-expanded',String(willOpen));}
 $('showMed').addEventListener('click',()=>toggleBridge('med','showMed'));
 $('showAction').addEventListener('click',()=>toggleBridge('action','showAction'));
-function update(){if(state.active!==lastBridgeQuestion){resetBridges();lastBridgeQuestion=state.active;}const completed=Object.keys(state.counts).filter(k=>state.counts[k]!==null&&state.counts[k]!==undefined).length;const yesTotal=Object.values(state.counts).reduce((sum,n)=>sum+(Number(n)||0),0);$('counterTop').textContent=state.used.length+' de 20 questões sorteadas';$('answersTop').textContent=completed+' respostas registradas';$('scoreTop').textContent=yesTotal+' respostas alinhadas às boas práticas · '+state.total+' '+(state.total===1?'participante':'participantes');$('progress').style.width=(state.used.length*5)+'%';$('spin').disabled=state.used.length===20||isSpinning||state.active>=0;$('last').disabled=state.active<0;$('totalSummary').textContent=state.total;if(state.active>=0){const i=state.active,q=questions[i];$('qhead').textContent='QUESTÃO '+(i+1)+' • '+groups[q.g];$('qtext').textContent=q.q;$('med').textContent=q.m;$('action').textContent=q.a;$('count').value=state.counts[i]??'';$('answerYes').classList.toggle('selected',state.counts[i]===1);$('answerNo').classList.toggle('selected',state.counts[i]===0);$('note').value=state.notes[i]||'';$('qcontrols').classList.remove('hidden')}else{$('qhead').textContent='';$('qtext').textContent='Gire a roda para começar.';$('qcontrols').classList.add('hidden')}}
-function goodCount(i){if(state.counts[i]===undefined)return null;return questions[i].positive?Number(state.counts[i]):state.total-Number(state.counts[i])}
-function scores(){return groups.map((_,g)=>{let ids=questions.map((q,i)=>q.g===g?i:-1).filter(i=>i>=0&&state.counts[i]!==undefined);return ids.length?Math.round(100*ids.reduce((a,i)=>a+goodCount(i),0)/(ids.length*state.total)):null})}
+function update(){if(state.active!==lastBridgeQuestion){resetBridges();lastBridgeQuestion=state.active;}const completed=Object.keys(state.counts).filter(k=>state.counts[k]!==null&&state.counts[k]!==undefined).length;const yesTotal=Object.keys(state.counts).filter(k=>state.counts[k]!==null&&state.counts[k]!==undefined&&state.counts[k]!=='').reduce((sum,k)=>sum+goodCount(Number(k)),0);$('counterTop').textContent=state.used.length+' de 20 questões sorteadas';$('answersTop').textContent=completed+' respostas registradas';$('scoreTop').textContent=yesTotal+' respostas protetivas · '+state.total+' '+(state.total===1?'participante':'participantes');$('progress').style.width=(state.used.length*5)+'%';$('spin').disabled=state.used.length===20||isSpinning||state.active>=0;$('last').disabled=state.active<0;$('totalSummary').textContent=state.total;if(state.active>=0){const i=state.active,q=questions[i];$('qhead').textContent='QUESTÃO '+(i+1)+' • '+groups[q.g];$('qtext').textContent=q.q;$('med').textContent=q.m;$('action').textContent=q.a;$('count').value=state.counts[i]??'';$('answerYes').classList.toggle('selected',state.counts[i]===1);$('answerNo').classList.toggle('selected',state.counts[i]===0);$('answerYes').setAttribute('aria-pressed',String(state.counts[i]===1));$('answerNo').setAttribute('aria-pressed',String(state.counts[i]===0));$('note').value=state.notes[i]||'';$('qcontrols').classList.remove('hidden')}else{$('qhead').textContent='';$('qtext').textContent='Gire a roda para começar.';$('qcontrols').classList.add('hidden')}}
+function goodCount(i){
+  if(state.counts[i]===undefined||state.counts[i]===null||state.counts[i]==='')return null;
+  const total=state.mode==='individual'?1:Math.max(1,Number(state.total)||1);
+  const yes=Math.min(total,Math.max(0,Number(state.counts[i])||0));
+  return questions[i].positive?yes:total-yes;
+}
+function scores(){
+  const total=state.mode==='individual'?1:Math.max(1,Number(state.total)||1);
+  return groups.map((_,g)=>{
+    const ids=questions.map((q,i)=>q.g===g?i:-1)
+      .filter(i=>i>=0&&state.counts[i]!==undefined&&state.counts[i]!==null&&state.counts[i]!=='');
+    if(!ids.length)return null;
+    const protective=ids.reduce((sum,i)=>sum+goodCount(i),0);
+    return Math.max(0,Math.min(100,Math.round(100*protective/(ids.length*total))));
+  });
+}
 function reflectionData(){
  const v=scores();
  const entries=v.map((value,g)=>({g,value,ids:questions.map((q,i)=>q.g===g&&state.counts[i]!==undefined?i:-1).filter(i=>i>=0)})).filter(x=>x.value!==null);
@@ -131,7 +199,7 @@ function reflectionData(){
  const strongest=entries.filter(x=>x.value===max),focus=entries.filter(x=>x.value===min);
  const names=items=>items.map(x=>groups[x.g]).join(', ');
  const paragraphs=[intro];
- if(max>=75)paragraphs.push('Pontos de apoio: '+names(strongest)+' apresenta(m) '+max+'% de respostas alinhadas às boas práticas. Reconheça as experiências já desenvolvidas e procure aplicá-las também a outras dimensões do projeto de vida.');
+ if(max>=75)paragraphs.push('Pontos de apoio: '+names(strongest)+' apresenta(m) '+max+'% de respostas alinhadas às boas práticas. Reconheça as experiências já desenvolvidas e procure aplicá-las também a outras dimensões da cidadania digital.');
  else if(max>=50)paragraphs.push('Há experiências importantes em '+names(strongest)+' ('+max+'% de respostas alinhadas às boas práticas). Elas podem servir de ponto de partida para fortalecer hábitos e ampliar oportunidades.');
  else paragraphs.push('As respostas registradas convidam à construção gradual de novas experiências. Valorize o que já foi realizado e escolha uma ação pequena, concreta e possível para começar.');
  if(min<max){
@@ -159,11 +227,11 @@ function radar(){
  // Posições fixas para os rótulos: mantêm os textos fora do pentágono e dentro do canvas.
  // A etiqueta do lazer tem duas linhas, alinhadas à direita e afastadas do vértice esquerdo.
  const captions=[
-  {lines:['Protagonismo'],x:300,y:33,align:'center'},
-  {lines:['Tecnologia'],x:491,y:178,align:'left'},
-  {lines:['ENEM'],x:434,y:443,align:'center'},
-  {lines:['Carreira'],x:166,y:443,align:'center'},
-  {lines:['Lazer','e tempo livre'],x:110,y:165,align:'right'}
+  {lines:['Senhas e','contas'],x:300,y:27,align:'center'},
+  {lines:['Segurança','na escola'],x:472,y:172,align:'left'},
+  {lines:['Vida pessoal','e redes'],x:421,y:437,align:'left'},
+  {lines:['Primeiro','emprego'],x:173,y:437,align:'right'},
+  {lines:['LGPD e','cidadania'],x:120,y:172,align:'right'}
  ];
  captions.forEach((label,i)=>{
   x.textAlign=label.align;x.textBaseline='alphabetic';x.fillStyle='#f0f6ff';
@@ -173,9 +241,9 @@ function radar(){
   x.fillText(v[i]===null?'—':v[i]+'%',label.x,label.y+label.lines.length*21+5);
  });
  x.fillStyle='#d5e4f3';x.font='14px system-ui';x.textAlign='left';x.fillText('Escala: 0% (centro) a 100% (vértices)',14,543);
- $('metrics').innerHTML=groups.map((g,i)=>{const done=questions.filter((q,j)=>q.g===i&&state.counts[j]!==undefined).length;return '<div class="metric-row"><div class="metric-title"><strong>'+g+'</strong><span class="metric-value" style="color:'+colors[i]+'">'+(v[i]===null?'—':v[i]+'%')+'</span></div><small>'+(v[i]===null?'Sem respostas registradas':done+' de 4 questões respondidas · percentual de SIM')+'</small><div class="metric-track"><div class="metric-fill" style="width:'+(v[i]??0)+'%;background:'+colors[i]+'"></div></div></div>'}).join('');renderReflection();
+ $('metrics').innerHTML=groups.map((g,i)=>{const done=questions.filter((q,j)=>q.g===i&&state.counts[j]!==undefined).length;return '<div class="metric-row"><div class="metric-title"><strong>'+g+'</strong><span class="metric-value" style="color:'+colors[i]+'">'+(v[i]===null?'—':v[i]+'%')+'</span></div><small>'+(v[i]===null?'Sem respostas registradas':done+' de 4 questões respondidas · percentual de respostas protetivas')+'</small><div class="metric-track"><div class="metric-fill" style="width:'+(v[i]??0)+'%;background:'+colors[i]+'"></div></div></div>'}).join('');renderReflection();
 }
-function summary(){const v=scores();return 'RODA DAS COMPETÊNCIAS — RELATÓRIO FORMATIVO\nTurma: '+(state.className||'Não informada')+'\nEstudantes: '+state.total+'\nQuestões realizadas: '+state.used.length+'/20\n\n'+groups.map((g,i)=>g+': '+(v[i]??'Sem dados')+(v[i]===null?'':'%')).join('\n')+'\n\nLEITURA REFLEXIVA\n'+reflectionData().join('\n\n')+'\n\n'+state.used.map(i=>'QUESTÃO '+(i+1)+' — '+questions[i].q+'\nSIM: '+(state.counts[i]??'Não informado')+' | NÃO: '+(state.counts[i]===undefined?'Não informado':state.total-state.counts[i])+'\nMEDIAÇÃO: '+questions[i].m+'\nENCAMINHAMENTO: '+questions[i].a+'\nCOMENTÁRIOS: '+(state.notes[i]||'Não registradas')).join('\n\n')}
+function summary(){const v=scores();return 'RODA DAS COMPETÊNCIAS — LGPD · RELATÓRIO FORMATIVO\nTurma: '+(state.className||'Não informada')+'\nEstudantes: '+state.total+'\nQuestões realizadas: '+state.used.length+'/20\n\n'+groups.map((g,i)=>g+': '+(v[i]??'Sem dados')+(v[i]===null?'':'%')).join('\n')+'\n\nLEITURA REFLEXIVA\n'+reflectionData().join('\n\n')+'\n\n'+state.used.map(i=>'QUESTÃO '+(i+1)+' — '+questions[i].q+'\nSIM: '+(state.counts[i]??'Não informado')+' | NÃO: '+(state.counts[i]===undefined?'Não informado':state.total-state.counts[i])+'\nMEDIAÇÃO: '+questions[i].m+'\nENCAMINHAMENTO: '+questions[i].a+'\nCOMENTÁRIOS: '+(state.notes[i]||'Não registradas')).join('\n\n')}
 $('copy').onclick=async()=>{try{await navigator.clipboard.writeText(summary());$('status').textContent='Resumo copiado.'}catch(e){$('status').textContent='Não foi possível copiar automaticamente.'}};
 // Exportação DOCX nativa, sem dependências externas e sem conexão à internet.
 const enc=new TextEncoder();
@@ -188,11 +256,11 @@ function zipDocx(files){const chunks=[],central=[];let pos=0;const u16=n=>[n&255
 function makeDocx(){
  const v=scores(),paragraphs=[];
  const P=(text,heading=false)=>{paragraphs.push('<w:p><w:pPr>'+(heading?'<w:pStyle w:val="Heading2"/>':'')+'<w:spacing w:after="160"/></w:pPr><w:r><w:t xml:space="preserve">'+xmlEscape(text)+'</w:t></w:r></w:p>')};
- P('RODA DAS COMPETÊNCIAS — LGPD',true);P('Laboratório de Educação Digital — Cibersegurança • Proteção de Dados • Cidadania Digital');P('Modalidade: '+(state.mode==='individual'?'Individual':'Coletiva'));P('Turma: '+(state.className||'Não informada'));P('Participantes: '+state.total);P('Questões sorteadas: '+state.used.length+' de 20');
+ P('RODA DAS COMPETÊNCIAS — LGPD',true);P('Laboratório de Cidadania Digital — Privacidade de dados • Segurança digital • Cidadania');P('Modalidade: '+(state.mode==='individual'?'Individual':'Coletiva'));P('Turma: '+(state.className||'Não informada'));P('Participantes: '+state.total);P('Questões sorteadas: '+state.used.length+' de 20');
  P('PENTÁGONO DAS COMPETÊNCIAS',true);
  // O gráfico é incluído como PNG dentro do arquivo DOCX.
  paragraphs.push('<w:p><w:r><w:drawing><wp:inline xmlns:wp="http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing"><wp:extent cx="5486400" cy="5120640"/><wp:docPr id="1" name="Pentágono de resultados"/><a:graphic xmlns:a="http://schemas.openxmlformats.org/drawingml/2006/main"><a:graphicData uri="http://schemas.openxmlformats.org/drawingml/2006/picture"><pic:pic xmlns:pic="http://schemas.openxmlformats.org/drawingml/2006/picture"><pic:nvPicPr><pic:cNvPr id="0" name="Pentagono.png"/><pic:cNvPicPr/></pic:nvPicPr><pic:blipFill><a:blip r:embed="rId2" xmlns:r="http://schemas.openxmlformats.org/officeDocument/2006/relationships"/><a:stretch><a:fillRect/></a:stretch></pic:blipFill><pic:spPr><a:xfrm><a:off x="0" y="0"/><a:ext cx="5486400" cy="5120640"/></a:xfrm><a:prstGeom prst="rect"><a:avLst/></a:prstGeom></pic:spPr></pic:pic></a:graphicData></a:graphic></wp:inline></w:drawing></w:r></w:p>');
- P('Percentuais de respostas alinhadas às boas práticas nas questões efetivamente registradas.');groups.forEach((g,i)=>P(g+': '+(v[i]===null?'Sem registros':v[i]+'%')));
+ P('Percentuais de respostas SIM nas questões efetivamente registradas.');groups.forEach((g,i)=>P(g+': '+(v[i]===null?'Sem registros':v[i]+'%')));
  P('LEITURA REFLEXIVA',true);reflectionData().forEach(t=>P(t));P('REGISTROS POR QUESTÃO',true);
  state.used.forEach(i=>{const q=questions[i];P((i+1)+'. '+groups[q.g],true);P(q.q);P('SIM: '+(state.counts[i]??'Não registrado')+' | NÃO: '+(state.counts[i]===undefined?'Não registrado':state.total-state.counts[i]));P('Ponte — Mediação: '+q.m);P('Ponte — Encaminhamento: '+q.a);P('Comentários: '+(state.notes[i]||'Não registrados'))});
  P('INTERVENÇÕES PEDAGÓGICAS',true);if(typeof getInterventions==='function'){getInterventions().forEach((r,g)=>{P(groups[g],true);P('Situação: '+r.status+' | Data: '+(r.date||'Não informada'));P('Plano: '+(r.plan||'Não registrado'));P('Evidências: '+(r.evidence||'Não registradas'));P('Reavaliação: '+(r.reeval||'Não registrada'))})}P('Este material é formativo e não classifica estudantes. Evite dados pessoais sensíveis.');
@@ -204,13 +272,24 @@ function makeDocx(){
  const png=$('radar').toDataURL('image/png').split(',')[1],binary=atob(png),img=Uint8Array.from(binary,c=>c.charCodeAt(0));
  return zipDocx([['[Content_Types].xml',enc.encode(contentTypes)],['_rels/.rels',enc.encode(rels)],['word/document.xml',enc.encode(documentXml)],['word/styles.xml',enc.encode(styles)],['word/_rels/document.xml.rels',enc.encode(docrels)],['word/media/pentagono.png',img]]);
 }
-$('export').onclick=()=>{try{saveState();radar();const blob=makeDocx(),url=URL.createObjectURL(blob),a=document.createElement('a');a.href=url;a.download='Roda_das_Competencias_Sec_XXI_Relatorio.docx';document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(url),30000);$('status').textContent='Relatório DOCX gerado e disponibilizado para download.'}catch(e){$('status').textContent='Não foi possível gerar o DOCX: '+e.message;console.error(e)}};
-$('reportBack').onclick=()=>tab('roda');$('reportReset').onclick=()=>$('resetHome').click();$('resetHome').onclick=()=>{if(!confirm('Reiniciar a roda? A experiência atual será arquivada no histórico da turma, se houver uma turma selecionada.'))return;if(typeof archiveCurrentExperience==='function')archiveCurrentExperience(true);state={used:[],active:-1,counts:{},notes:{},className:state.className,total:state.total,mode:state.mode};lastGroup=-1;angle=0;wheel(0);$('spinMessage').textContent='';saveState();update();tab('roda')};$('changeExperience').onclick=()=>{const hasRecords=state.used.length>0||Object.keys(state.counts).length>0||Object.values(state.notes).some(v=>String(v||'').trim());if(hasRecords&&!confirm('Finalizar esta experiência? Os registros serão arquivados automaticamente se uma turma estiver selecionada. Caso contrário, exporte uma cópia JSON antes de sair.'))return;if(typeof archiveCurrentExperience==='function')archiveCurrentExperience(true);state={used:[],active:-1,counts:{},notes:{},className:'',total:10,mode:null};lastGroup=-1;angle=0;wheel(0);$('spinMessage').textContent='';$('className').value='';$('total').value='10';$('welcome').classList.remove('hidden');$('appMain').classList.add('hidden');syncModeNavigation();try{localStorage.removeItem('rodaLGPDPremiumV10')}catch(e){};update();window.scrollTo(0,0)};$('className').value=state.className;$('total').value=state.total;$('totalSummary').textContent=state.total;wheel();syncModeNavigation();update();
+$('export').onclick=()=>{try{saveState();radar();const blob=makeDocx(),url=URL.createObjectURL(blob),a=document.createElement('a');a.href=url;a.download='Roda_das_Competencias_LGPD_Relatorio.docx';document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(url),30000);$('status').textContent='Relatório DOCX gerado e disponibilizado para download.'}catch(e){$('status').textContent='Não foi possível gerar o DOCX: '+e.message;console.error(e)}};
+$('reportBack').onclick=()=>tab('roda');$('reportReset').onclick=()=>$('resetHome').click();$('resetHome').onclick=()=>{if(!confirm('Reiniciar a roda? A experiência atual será arquivada no histórico da turma, se houver uma turma selecionada.'))return;if(typeof archiveCurrentExperience==='function')archiveCurrentExperience(true);state={used:[],active:-1,counts:{},notes:{},className:state.className,total:state.total,mode:state.mode};lastGroup=-1;angle=0;wheel(0);$('spinMessage').textContent='';saveState();update();tab('roda')};$('changeExperience').onclick=()=>{const hasRecords=state.used.length>0||Object.keys(state.counts).length>0||Object.values(state.notes).some(v=>String(v||'').trim());if(hasRecords&&!confirm('Finalizar esta experiência? Os registros serão arquivados automaticamente se uma turma estiver selecionada. Caso contrário, exporte uma cópia JSON antes de sair.'))return;if(typeof archiveCurrentExperience==='function')archiveCurrentExperience(true);state={used:[],active:-1,counts:{},notes:{},className:'',total:10,mode:null};lastGroup=-1;angle=0;wheel(0);$('spinMessage').textContent='';$('className').value='';$('total').value='10';$('welcome').classList.remove('hidden');$('appMain').classList.add('hidden');syncModeNavigation();try{localStorage.removeItem('rodaLGPDPremiumV10')}catch(e){};update();window.scrollTo(0,0)};$('className').value=state.className;$('total').value=state.total;$('totalSummary').textContent=state.total;wheel();syncModeNavigation();/* V67: a tela LOGIN deve sempre aparecer primeiro, inclusive após recarregar. */
 
 // v19: manter o layout sincronizado com o modo de tela cheia.
 document.addEventListener('fullscreenchange',()=>{
   document.documentElement.classList.toggle('fullscreen-active',Boolean(document.fullscreenElement));
   const btn=document.getElementById('fullScreen');
   if(btn)btn.textContent=document.fullscreenElement?'⛶ SAIR DA TELA CHEIA':'⛶ TELA CHEIA';
+  const loginBtn=document.getElementById('loginFullscreen');
+  if(loginBtn){loginBtn.textContent=document.fullscreenElement?'⛶ SAIR DA TELA CHEIA':'⛶ TELA CHEIA';loginBtn.setAttribute('aria-label',document.fullscreenElement?'Sair da tela cheia':'Abrir tela de entrada em tela cheia');}
   window.dispatchEvent(new Event('resize'));
 });
+
+// V67 — instruções acessíveis na tela de entrada.
+(function(){
+ const open=document.getElementById('openInstructions');
+ const close=document.getElementById('closeInstructions');
+ const dialog=document.getElementById('instructionsDialog');
+ if(open&&dialog)open.addEventListener('click',()=>{if(typeof dialog.showModal==='function')dialog.showModal();else dialog.setAttribute('open','');});
+ if(close&&dialog)close.addEventListener('click',()=>{if(typeof dialog.close==='function')dialog.close();else dialog.removeAttribute('open');});
+})();
