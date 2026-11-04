@@ -24,3 +24,17 @@ PERSISTÊNCIA / COMPATIBILIDADE
 
 PUBLICAÇÃO NO GITHUB
 Substitua TODOS os arquivos da raiz pelos do ZIP. Imagens e arquivos HTML, CSS, JavaScript e JSON ficam na raiz, com os nomes mantidos. Atualize com Ctrl+F5.
+
+
+ATUALIZAÇÃO LGPD V75.1 — ROLAGEM DE ANÁLISE E INTERVENÇÕES
+- Correção exclusivamente no arquivo style.css, isolada para a tela
+  Análise e Intervenções durante o modo tela cheia.
+- A área principal (#appMain) passa a receber a rolagem vertical do mouse.
+- Demais telas, perguntas e intervenções não foram alteradas.
+- Testes de rolagem para cima/baixo concluídos nas modalidades individual
+  e coletiva, em 1366x768, 1920x1080, 850x700 e 390x844.
+
+ATUALIZAÇÃO NO GITHUB
+- Para quem já utiliza o pacote V75 corrigido, basta substituir style.css.
+- Se preferir, publique o pacote ZIP completo, mantendo os nomes da raiz.
+- Utilize Ctrl+F5 para descartar o CSS anterior em cache.

@@ -1830,3 +1830,41 @@ html.fullscreen-active body main#appMain:has(> section#turmas:not(.hidden)) {
   overflow-y:auto!important;
   overflow-x:hidden!important;
 }
+
+
+/* LGPD V75.1 — CORREÇÃO ISOLADA: rolagem por roda do mouse na Análise e Intervenções.
+   Causa: regras herdadas da apresentação XXI aplicavam altura auto ao elemento
+   em fullscreen, deixando #appMain sem região de rolagem; o elemento html em
+   fullscreen não recebe rolagem de página por mouse neste cenário.
+   Solução: apenas na aba de intervenção, o #appMain vira contêiner de scroll
+   de altura limitada ao viewport. As telas de pergunta, roda e turmas NÃO são alteradas. */
+html:fullscreen:has(body #intervencao:not(.hidden)),
+html.fullscreen-active:has(body #intervencao:not(.hidden)),
+html:fullscreen:has(body #intervencao:not(.hidden)) body,
+html.fullscreen-active:has(body #intervencao:not(.hidden)) body {
+  height:100dvh!important;
+  min-height:100dvh!important;
+  max-height:100dvh!important;
+  overflow-x:hidden!important;
+  overflow-y:hidden!important;
+}
+html:fullscreen body main#appMain:has(> #intervencao:not(.hidden)),
+html.fullscreen-active body main#appMain:has(> #intervencao:not(.hidden)) {
+  display:block!important;
+  box-sizing:border-box!important;
+  height:100dvh!important;
+  min-height:0!important;
+  max-height:100dvh!important;
+  overflow-x:hidden!important;
+  overflow-y:auto!important;
+  overscroll-behavior-y:contain;
+  scrollbar-gutter:stable;
+  -webkit-overflow-scrolling:touch;
+}
+html:fullscreen body #intervencao:not(.hidden),
+html.fullscreen-active body #intervencao:not(.hidden) {
+  height:auto!important;
+  min-height:0!important;
+  max-height:none!important;
+  overflow:visible!important;
+}
